@@ -1,0 +1,43 @@
+/* Foiano Pallavolo – colori della linea grafica (tema unico, chiaro)
+   Valori letti dalla linea grafica "Foiano Pallavolo", sezione Colors. */
+:root {
+  /* base */
+  --bianco: #ffffff;
+  --inchiostro: #2b2b2e;
+  --didascalia: #8a8a92;
+
+  /* rossi */
+  --rosso: #c1272d;          /* colore della società */
+  --rosso-scuro: #8c1a1f;    /* pannelli, pulsante al passaggio del mouse */
+  --rosso-notte: #5e1114;    /* fine gradiente pannelli */
+  --rosso-pannello: #b3232a; /* inizio gradiente pannelli */
+  --rosso-righe: #e0474d;    /* righe su fondo scuro, solo decorazione */
+
+  /* arancio */
+  --arancio-logo: #f7931e;   /* solo nel logo */
+
+  /* testo sopra i colori */
+  --su-rosso: var(--bianco);
+  --su-fascia-chiara: #4a0b0f;
+
+  /* testo */
+  --testo: #45454b;
+  --testo-tenue: #6e6e76;
+
+  /* rosa */
+  --rosa-chip: #fbecec;
+  --rosa-superficie: #fbf3f3;
+  --rosa-riga: #fdf6f6;
+
+  /* linee e bordi */
+  --linea: #f0e2e2;
+  --linea-rosa: #ebd3d4;
+  --bordo-card: #ebcfd0;
+
+  /* fasce di prezzo (dal più scuro al più chiaro) */
+  --fascia-1000: #7a1218;
+  --fascia-500: var(--rosso);
+  --fascia-350: #de5a5f;
+  --fascia-300: #ee9396;
+  --fascia-200: #f6c4c5;
+}
