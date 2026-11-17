@@ -11,7 +11,7 @@ export function buildMonthGrid(year, month) {
       {
         length: new Date(year, month + 1, 0).getDate(),
       },
-      (h, C) => C + 1,
+      (_, index) => index + 1,
     ),
   ];
 }

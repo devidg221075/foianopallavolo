@@ -13,34 +13,34 @@ export function TeamsPage({
 }) {
   const [activeSection, setActiveSection] = useState("prime-squadre");
   useEffect(() => {
-    let b = 0;
-    const A = () => {
-      b = 0;
-      const U = document.querySelector(".teams-section-nav");
-      const ee = (U?.getBoundingClientRect().bottom || 150) + 60;
-      let Me = "prime-squadre";
-      for (const te of ["prime-squadre", "settore-giovanile", "minivolley"]) {
-        const Ae = document.getElementById(te);
-        if (Ae && Ae.getBoundingClientRect().top <= ee) {
-          Me = te;
+    let frame = 0;
+    const updateActiveSection = () => {
+      frame = 0;
+      const nav = document.querySelector(".teams-section-nav");
+      const threshold = (nav?.getBoundingClientRect().bottom || 150) + 60;
+      let current = "prime-squadre";
+      for (const id of ["prime-squadre", "settore-giovanile", "minivolley"]) {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= threshold) {
+          current = id;
         }
       }
-      setActiveSection(Me);
+      setActiveSection(current);
     };
-    const Z = () => {
-      if (!b) {
-        b = requestAnimationFrame(A);
+    const onScrollOrResize = () => {
+      if (!frame) {
+        frame = requestAnimationFrame(updateActiveSection);
       }
     };
-    Z();
-    window.addEventListener("scroll", Z, {
+    onScrollOrResize();
+    window.addEventListener("scroll", onScrollOrResize, {
       passive: true,
     });
-    window.addEventListener("resize", Z);
+    window.addEventListener("resize", onScrollOrResize);
     return () => {
-      cancelAnimationFrame(b);
-      window.removeEventListener("scroll", Z);
-      window.removeEventListener("resize", Z);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
     };
   }, []);
   return (

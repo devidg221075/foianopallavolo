@@ -7,18 +7,15 @@ export function HistoryPage({ openContact }) {
   const [activeChapter, setActiveChapter] = useState(0);
   const chapter = HISTORY_CHAPTERS[activeChapter];
   function onTabKeyDown(event) {
-    var G;
-    let q = activeChapter;
-    if (event.key === "ArrowRight") q = (activeChapter + 1) % 4;
-    else if (event.key === "ArrowLeft") q = (activeChapter + 3) % 4;
-    else if (event.key === "Home") q = 0;
-    else if (event.key === "End") q = 3;
+    let next = activeChapter;
+    if (event.key === "ArrowRight") next = (activeChapter + 1) % 4;
+    else if (event.key === "ArrowLeft") next = (activeChapter + 3) % 4;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = 3;
     else return;
     event.preventDefault();
-    setActiveChapter(q);
-    if (!((G = document.getElementById("chapter-" + q)) == null)) {
-      G.focus();
-    }
+    setActiveChapter(next);
+    document.getElementById("chapter-" + next)?.focus();
   }
   return (
     <div className="history-page">

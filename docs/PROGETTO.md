@@ -1,6 +1,17 @@
 # Foiano Pallavolo – Progetto del sito
 
-Versione 1 · 16/11/2026 · bozza da confermare
+Versione 2 · 17/11/2026 · aggiornata con lo stato reale del sito
+
+## Stato attuale (17/11/2026)
+
+Esiste già un sito completo, **versione 1.5**, generato con ChatGPT: 12 pagine, grafica fedele alla linea grafica, foto dimostrative, nessun dato inventato. Era un pacchetto statico compilato, senza codice sorgente.
+
+- **Fatto:** il sorgente è stato ricostruito in questo repository (React + Vite, uscita statica) e verificato identico al pacchetto originale. Istruzioni in `README.md`.
+- **Hosting:** sottodominio statico `foianopallavolo.keyidea.it`, senza Node.js, PHP o database. Per questo il sito resta statico e non usa Next.js con server.
+- **Struttura reale:** coincide con la mappa di questo documento, con queste differenze: la voce di menu è «Il club» (non «La società»), «Dal 1976» contiene storia, Loredano Vannuccini e rassegna stampa, e il pulsante fisso è «Vieni a giocare».
+- **Da fare:** sostituire le foto dimostrative, inserire calendari e rose (oggi vuoti), decidere come gestire i moduli (oggi aprono l'app di posta), togliere `noindex` alla pubblicazione, informativa privacy.
+
+Le sezioni qui sotto restano valide come direzione per le prossime versioni.
 
 ## 1. Obiettivi
 
@@ -77,8 +88,9 @@ Regole:
 
 ## 7. Tecnologia
 
-- **Next.js** (App Router), CSS puro sui token `fp-`, deploy su Vercel. Alternativa semplice: HTML/CSS statico (da decidere).
-- Animazioni: **Motion**; GSAP ScrollTrigger solo se la cronologia lo richiede.
+- **Adottato nella v1.5:** React + Vite, uscita statica (HTML + JS + CSS), CSS scritto a mano. Le animazioni sono in CSS puro e in poche righe di JavaScript, senza librerie di animazione.
+- **Next.js e Vercel:** non necessari finché l'hosting resta statico; si possono riconsiderare se servissero un CMS o l'invio dei moduli lato server.
+- **Animazioni nelle prossime versioni:** Motion; GSAP ScrollTrigger solo se la cronologia lo richiede.
 - Immagini ottimizzate, SEO locale, dati strutturati (club e partite).
 - Accessibilità: navigazione da tastiera, focus visibile (anello 3 px inchiostro), contrasti.
 
@@ -125,7 +137,7 @@ Decisioni:
 - [ ] Dominio e chi lo gestisce
 - [ ] Chi aggiornerà i contenuti dopo la consegna
 - [ ] CMS con login o file nel repo
-- [ ] Stack: Next.js (consigliato) o HTML/CSS semplice
+- [x] Stack: React + Vite statico (v1.5, hosting `keyidea.it`)
 - [ ] Origine di calendari e classifiche
 
 ## 11. Fonti di questo documento

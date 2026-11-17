@@ -4,30 +4,32 @@ export function CountUp({ value, pad = false }) {
   const [displayValue, setDisplayValue] = useState(0);
   const ref = useRef();
   useEffect(() => {
-    const H = new IntersectionObserver(
-      ([q]) => {
-        if (!q.isIntersecting) return;
-        let G;
-        const b = matchMedia("(prefers-reduced-motion: reduce)").matches;
-        function A(Z) {
-          G ?? (G = Z);
-          const U = Math.min((Z - G) / 1500, 1);
-          setDisplayValue(Math.round(value * (1 - Math.pow(1 - U, 3))));
-          if (U < 1 && !b) {
-            requestAnimationFrame(A);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        let startTime;
+        const reducedMotion = matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        function step(time) {
+          startTime ??= time;
+          const progress = Math.min((time - startTime) / 1500, 1);
+          setDisplayValue(Math.round(value * (1 - Math.pow(1 - progress, 3))));
+          if (progress < 1 && !reducedMotion) {
+            requestAnimationFrame(step);
           } else {
             setDisplayValue(value);
           }
         }
-        requestAnimationFrame(A);
-        H.disconnect();
+        requestAnimationFrame(step);
+        observer.disconnect();
       },
       {
         threshold: 0.3,
       },
     );
-    H.observe(ref.current);
-    return () => H.disconnect();
+    observer.observe(ref.current);
+    return () => observer.disconnect();
   }, [value]);
   return (
     <span ref={ref}>

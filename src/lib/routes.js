@@ -17,7 +17,7 @@ export function matchesUrl(teamId = "", view = "calendario") {
 
 export const isTeamsPage = /\/squadre(?:\.html)?\/?$/.test(location.pathname);
 
-export const teamHref = (d) => "/" + TEAM_SLUGS[d.id] + ".html";
+export const teamHref = (team) => "/" + TEAM_SLUGS[team.id] + ".html";
 
 export const currentTeamId = Object.keys(TEAM_SLUGS).find(
   (item) => location.pathname === "/" + TEAM_SLUGS[item] + ".html",

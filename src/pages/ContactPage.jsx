@@ -16,7 +16,7 @@ export function ContactPage() {
   const [emailPrepared, setEmailPrepared] = useState(false);
   function prepareEmail(event) {
     event.preventDefault();
-    const Z = `Ciao Foiano Pallavolo,
+    const body = `Ciao Foiano Pallavolo,
 sono ${name}.
 
 ${message}
@@ -26,7 +26,7 @@ Interesse: ${interest}`;
       "mailto:marketing.foianopallavolo@gmail.com?subject=" +
       encodeURIComponent(interest + " - " + name) +
       "&body=" +
-      encodeURIComponent(Z);
+      encodeURIComponent(body);
     setEmailPrepared(true);
   }
   return (

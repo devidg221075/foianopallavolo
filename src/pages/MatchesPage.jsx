@@ -40,8 +40,8 @@ export function MatchesPage({ openContact, openSponsors }) {
   const teamFixtures = FIXTURES.filter(
     (item) => teamFilter === "tutte" || item.team === teamFilter,
   );
-  const dateKey = (D) =>
-    `${visibleMonth.getFullYear()}-${String(visibleMonth.getMonth() + 1).padStart(2, "0")}-${String(D).padStart(2, "0")}`;
+  const dateKey = (day) =>
+    `${visibleMonth.getFullYear()}-${String(visibleMonth.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   const monthFixtures = teamFixtures.filter((teamFixture) => {
     return (
       teamFixture.date?.startsWith(dateKey(1).slice(0, 7)) &&
@@ -55,25 +55,27 @@ export function MatchesPage({ openContact, openSponsors }) {
           (monthFixture) => monthFixture.status !== "played",
         );
   useEffect(() => {
-    const D = new URLSearchParams();
+    const query = new URLSearchParams();
     if (teamFilter !== "tutte") {
-      D.set("squadra", teamFilter);
+      query.set("squadra", teamFilter);
     }
     if (view !== "calendario") {
-      D.set("vista", view);
+      query.set("vista", view);
     }
     history.replaceState(
       null,
       "",
-      location.pathname + (D.size ? "?" + D : "") + location.hash,
+      location.pathname + (query.size ? "?" + query : "") + location.hash,
     );
   }, [teamFilter, view]);
-  const changeMonth = (D) => {
-    setVisibleMonth((Q) => new Date(Q.getFullYear(), Q.getMonth() + D, 1));
+  const changeMonth = (delta) => {
+    setVisibleMonth(
+      (month) => new Date(month.getFullYear(), month.getMonth() + delta, 1),
+    );
     setSelectedDay(null);
   };
-  const selectTeam = (D) => {
-    setTeamFilter(D);
+  const selectTeam = (teamId) => {
+    setTeamFilter(teamId);
     setSelectedDay(null);
   };
   return (
