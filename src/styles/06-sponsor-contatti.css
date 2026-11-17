@@ -1,0 +1,324 @@
+.sc-page h2 {
+  font:
+    900 clamp(32px, 3.8vw, 58px)/1.08 Inter,
+    sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.sc-page h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.sc-page p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.sc-hero .teams-hero-red {
+  background-image: none;
+}
+
+.sc-intro,
+.sc-contact,
+.sc-location {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  padding-block: 80px;
+}
+
+.sc-intro .teams-kicker,
+.sc-contact .teams-kicker,
+.sc-location .teams-kicker,
+.sc-benefits .teams-kicker,
+.sc-package .teams-kicker,
+.sc-partners .teams-kicker {
+  margin-bottom: 18px;
+}
+
+.sc-intro .button {
+  margin-top: 25px;
+}
+
+.sc-benefits,
+.sc-partners {
+  padding-bottom: 75px;
+}
+
+.sc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.sc-grid article {
+  background: #f4f3f0;
+  padding: 28px;
+  min-height: 220px;
+}
+
+.sc-grid article span {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--red);
+}
+
+.sc-grid h3 {
+  font-size: 26px;
+  margin: 35px 0 12px;
+}
+
+.sc-package {
+  background: #f4f3f0;
+  padding-block: 75px;
+}
+
+.sc-package p {
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.sc-tiers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.sc-tiers > div {
+  background: #fff;
+  border-bottom: 3px solid var(--red);
+  padding: 22px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sc-tiers span,
+.sc-tiers small {
+  font-size: 10px;
+}
+
+.sc-tiers strong {
+  font-size: 27px;
+  color: var(--red);
+}
+
+.sc-package-note {
+  border-left: 4px solid var(--red);
+  margin-top: 32px;
+  padding: 5px 20px;
+}
+
+.sc-package-note p {
+  margin: 10px 0 18px;
+}
+
+.sc-partners {
+  padding-top: 75px;
+}
+
+.sc-partners > p {
+  margin-top: 15px;
+}
+
+.sc-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.sc-logos > div {
+  min-height: 115px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.sc-logos span {
+  font-size: 11px;
+  color: #555;
+}
+
+.sc-contact > div:first-child > p {
+  margin-top: 23px;
+}
+
+.sc-contact-list {
+  margin-top: 30px;
+  border-top: 1px solid #ddd;
+}
+
+.sc-contact-list > a,
+.sc-contact-list > div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.sc-contact-list svg {
+  color: var(--red);
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.sc-contact-list svg:last-child {
+  margin-left: auto;
+}
+
+.sc-contact-list span {
+  min-width: 0;
+}
+
+.sc-contact-list small {
+  display: block;
+  font-size: 10px;
+  color: var(--red);
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.sc-contact-list strong {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.sc-form {
+  padding: 35px;
+  background: #f4f3f0;
+}
+
+.sc-form h2 {
+  font-size: 35px;
+}
+
+.sc-form > p {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.sc-form form {
+  display: grid;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.sc-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.sc-form :is(input, select, textarea) {
+  width: 100%;
+  border: 1px solid #bbb;
+  background: #fff;
+  padding: 14px;
+  font: inherit;
+  min-height: 48px;
+}
+
+.sc-form textarea {
+  resize: vertical;
+}
+
+.sc-form .button {
+  justify-self: start;
+}
+
+.sc-location {
+  border-top: 1px solid #ddd;
+}
+
+.sc-location p {
+  margin-top: 20px;
+}
+
+.sc-location .button {
+  margin-top: 24px;
+}
+
+.sc-location-art {
+  background: var(--red);
+  color: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.sc-location-art svg {
+  width: 60px;
+  height: 60px;
+}
+
+.sc-location-art strong {
+  font:
+    900 clamp(35px, 5vw, 70px)/0.95 Inter,
+    sans-serif;
+  letter-spacing: -2px;
+}
+
+.sc-location-art span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 760px) {
+  .sc-page h2 {
+    font-size: 34px;
+  }
+  .sc-hero .teams-hero-copy p {
+    max-width: 80%;
+  }
+  .sc-intro,
+  .sc-contact,
+  .sc-location {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 40px;
+  }
+  .sc-benefits,
+  .sc-partners {
+    padding-block: 40px;
+  }
+  .sc-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .sc-grid article {
+    min-height: 0;
+  }
+  .sc-grid h3 {
+    margin-top: 20px;
+  }
+  .sc-package {
+    padding-block: 40px;
+  }
+  .sc-tiers,
+  .sc-logos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sc-form {
+    padding: 25px;
+  }
+  .sc-contact-list strong {
+    font-size: 13px;
+  }
+  .sc-location-art {
+    padding: 28px;
+  }
+}

@@ -1,0 +1,650 @@
+.history-page {
+  color: var(--ink);
+}
+
+.history-page h2 {
+  font-size: clamp(32px, 3.8vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+  font-weight: 900;
+}
+
+.history-page h2 em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.history-page p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.history-anniversary {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 27px 5.2%;
+  background: var(--red);
+  border-top: 1px solid #fff5;
+}
+
+.history-anniversary > span {
+  font-weight: 700;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+}
+
+.history-anniversary > strong {
+  font-size: 110px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -8px;
+}
+
+.history-anniversary p {
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.history-anniversary a {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-weight: 700;
+}
+
+.history-intro,
+.history-talent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  padding-block: 90px;
+}
+
+.history-page .teams-kicker {
+  margin-bottom: 20px;
+}
+
+.history-intro p + p {
+  margin-top: 18px;
+}
+
+.history-chapters {
+  padding-bottom: 80px;
+  scroll-margin-top: 120px;
+}
+
+.history-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 38px;
+  border-bottom: 2px solid #ddd;
+}
+
+.history-tabs button {
+  text-align: left;
+  padding: 22px 18px;
+  position: relative;
+  min-width: 0;
+}
+
+.history-tabs button strong {
+  display: block;
+  font-size: clamp(19px, 2.5vw, 38px);
+  letter-spacing: -1px;
+  font-weight: 900;
+}
+
+.history-tabs button span {
+  display: block;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.history-tabs button[aria-selected="true"] {
+  color: var(--red);
+}
+
+.history-tabs button[aria-selected="true"]:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--red);
+}
+
+.history-panel {
+  background: #f6f5f3;
+  padding: 45px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  min-height: 280px;
+  align-items: center;
+}
+
+.history-panel-number {
+  color: var(--red);
+  font-size: clamp(70px, 10vw, 140px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -8px;
+}
+
+.history-panel h3 {
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+.history-panel > div:last-child {
+  animation: chapterIn 0.35s ease-out;
+}
+
+@keyframes chapterIn {
+  0% {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.history-caronte {
+  background: var(--red);
+  padding-block: 75px;
+}
+
+.history-caronte-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8%;
+  align-items: center;
+}
+
+.history-memorial {
+  border: 1px solid #ffffff80;
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.history-memorial img {
+  width: 75px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.history-memorial > span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.history-memorial > strong {
+  font-size: clamp(30px, 3.7vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.history-memorial em {
+  font-size: 20px;
+}
+
+.history-caronte-copy p {
+  margin-top: 20px;
+}
+
+.history-caronte-copy .button {
+  margin-top: 28px;
+}
+
+.history-fei {
+  padding: 38px;
+  border-left: 5px solid var(--red);
+  background: #f6f5f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.history-fei > span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.history-fei > strong {
+  font-size: clamp(36px, 4.8vw, 72px);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -2px;
+}
+
+.history-fei strong span {
+  color: var(--red);
+}
+
+.history-talent p {
+  margin-top: 24px;
+}
+
+.history-press {
+  padding-bottom: 80px;
+}
+
+.history-press-note {
+  margin-top: 18px;
+  color: #555;
+}
+
+.history-press-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 36px;
+  border-top: 2px solid var(--ink);
+  gap: 28px;
+}
+
+.history-press article {
+  padding-top: 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 25px;
+}
+
+.history-news-date {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 12px;
+}
+
+.history-news-date > span {
+  color: var(--red);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.history-press h3 {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin: 24px 0 14px;
+}
+
+.history-press article p {
+  font-size: 16px;
+  margin-bottom: 26px;
+}
+
+.history-press article a {
+  margin-top: auto;
+  color: var(--red);
+  font-weight: 800;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.history-sources {
+  padding-block: 30px;
+}
+
+.history-sources summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.history-sources p {
+  font-size: 13px;
+  margin-top: 15px;
+}
+
+.history-sources a {
+  display: block;
+  color: var(--red);
+  font-size: 14px;
+  margin-top: 12px;
+  text-decoration: underline;
+}
+
+.history-page a:focus-visible,
+.history-page button:focus-visible {
+  outline: 3px solid #d6a100;
+  outline-offset: 5px;
+}
+
+.history-page .on-red .teams-kicker {
+  color: #fff;
+}
+
+.history-master-hero .teams-hero-red {
+  background-image: none;
+}
+
+@media (max-width: 700px) {
+  .history-page h2 {
+    letter-spacing: -1px;
+  }
+  .history-intro,
+  .history-talent,
+  .history-caronte-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .history-intro,
+  .history-talent {
+    padding-block: 48px;
+  }
+  .history-anniversary {
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 24px;
+  }
+  .history-anniversary > strong {
+    font-size: 82px;
+  }
+  .history-anniversary > span {
+    font-size: 11px;
+  }
+  .history-anniversary p {
+    font-size: 13px;
+  }
+  .history-anniversary a {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    justify-content: flex-end;
+  }
+  .history-tabs button {
+    padding: 18px 5px;
+  }
+  .history-tabs button strong {
+    font-size: 18px;
+    letter-spacing: -0.7px;
+  }
+  .history-tabs button span {
+    font-size: 11px;
+  }
+  .history-panel {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 18px;
+    min-height: 390px;
+  }
+  .history-panel-number {
+    font-size: 70px;
+    letter-spacing: -4px;
+  }
+  .history-panel h3 {
+    font-size: 27px;
+  }
+  .history-panel p {
+    font-size: 16px;
+  }
+  .history-chapters {
+    padding-bottom: 48px;
+  }
+  .history-caronte {
+    padding-block: 40px;
+  }
+  .history-memorial {
+    padding: 28px;
+  }
+  .history-press-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .history-press {
+    padding-bottom: 45px;
+  }
+  .history-fei {
+    padding: 28px;
+  }
+  .history-page .teams-join h2 {
+    font-size: 32px;
+  }
+  .history-master-hero .teams-hero-copy p {
+    max-width: 90%;
+    font-size: 16px;
+  }
+  .history-master-hero .teams-hero-copy {
+    padding-top: 25px;
+  }
+  .history-master-hero h1 {
+    font-size: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history-panel > div:last-child {
+    animation: none;
+  }
+}
+
+[data-motion="off"] .history-panel > div:last-child {
+  animation: none;
+}
+
+.club-news {
+  padding-block: 65px;
+}
+
+.home-news {
+  border-top: 1px solid var(--line);
+}
+
+.club-news-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.club-news-heading .teams-kicker {
+  margin-bottom: 15px;
+}
+
+.club-news h2 {
+  font:
+    900 clamp(30px, 3.4vw, 49px)/1.08 Inter,
+    sans-serif;
+  letter-spacing: -1.8px;
+}
+
+.club-news h2 > span {
+  color: var(--red);
+}
+
+.club-news-note {
+  color: #555;
+  font-size: 14px !important;
+  margin-top: 18px;
+}
+
+.club-news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.club-news article {
+  border-bottom: 2px solid var(--red);
+  display: flex;
+  flex-direction: column;
+  background: #f7f6f4;
+  scroll-margin-top: 120px;
+}
+
+.club-news-visual {
+  height: 205px;
+  padding: 25px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.club-news-visual > span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  z-index: 1;
+}
+
+.club-news-visual > strong {
+  font:
+    900 63px/0.93 Inter,
+    sans-serif;
+  letter-spacing: -3px;
+  z-index: 1;
+}
+
+.news-visual-0 {
+  background: var(--red);
+  color: #fff;
+}
+
+.news-visual-0 > strong {
+  font-size: 100px;
+}
+
+.news-visual-0 strong span {
+  font-size: 22px;
+  letter-spacing: -1px;
+  margin-left: 12px;
+}
+
+.news-visual-0 img {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  width: 100px;
+  height: 160px;
+  object-fit: contain;
+  transform: rotate(12deg);
+}
+
+.news-visual-1 {
+  background: #edeae4;
+  color: var(--red);
+}
+
+.news-visual-1 img {
+  position: absolute;
+  right: 22px;
+  bottom: 12px;
+  height: 160px;
+  width: 100px;
+  object-fit: contain;
+}
+
+.news-visual-2 {
+  background: #222225;
+  color: #fff;
+}
+
+.news-visual-2 > strong {
+  font-size: 52px;
+}
+
+.club-news-body {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.club-news-meta {
+  display: flex;
+  gap: 9px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 11px;
+}
+
+.club-news-meta > span {
+  color: var(--red);
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+
+.club-news h3 {
+  font:
+    800 clamp(22px, 2vw, 28px)/1.15 Inter,
+    sans-serif;
+  letter-spacing: -0.8px;
+  margin: 22px 0 14px;
+}
+
+.club-news-body p {
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  margin-bottom: 26px;
+}
+
+.club-news-body > a {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--red);
+}
+
+.club-news-body > a svg {
+  width: 19px;
+}
+
+.club-news article:hover .club-news-body > a svg {
+  transform: translate(3px, -3px);
+  transition: transform 0.2s;
+}
+
+@media (max-width: 760px) {
+  .club-news {
+    padding-block: 40px;
+  }
+  .club-news-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .club-news-grid {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+  .club-news h2 {
+    letter-spacing: -1px;
+  }
+  .club-news-visual {
+    height: 180px;
+  }
+  .club-news-body {
+    padding: 23px;
+  }
+  .club-news h3 {
+    font-size: 26px;
+  }
+  .club-news-note {
+    font-size: 13px !important;
+  }
+  .club-news-heading > .text-link {
+    font-size: 13px;
+  }
+}
