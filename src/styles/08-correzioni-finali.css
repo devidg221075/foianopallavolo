@@ -785,10 +785,10 @@
   }
 }
 
-/* Hero della home, prima slide: il giocatore in ritaglio sta sopra la scritta FOIANO e
-   la foto piccola non c'è, così non si sovrappone a nient'altro. */
-.slide-man .hero-inset {
-  display: none;
+/* Hero della home, prima slide: il giocatore in ritaglio sta tra il titolo e la foto di squadra,
+   sopra la scritta FOIANO, senza coprire nessuno dei due. */
+.slide-man .athlete-layer {
+  right: 17%;
 }
 
 .slide-man .hero-athlete {
@@ -796,8 +796,15 @@
   object-position: center top;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
+  /* Su telefono lo spazio tra il titolo e la foto di squadra è poco: il giocatore sta lì in mezzo. */
+  .slide-man .athlete-layer {
+    right: 0;
+    width: 52%;
+    height: 27%;
+    bottom: 30%;
+  }
   .slide-man .hero-athlete {
-    height: 62%;
+    height: 100%;
   }
 }

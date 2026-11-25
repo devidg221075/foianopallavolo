@@ -115,7 +115,9 @@ export function Hero({
               alt={
                 slide.k === "young"
                   ? "Allenamento del settore giovanile"
-                  : "Pallavolo femminile, energia in campo"
+                  : slide.k === "man"
+                    ? "Foto di squadra della Serie C maschile davanti al fondale Foiano Pallavolo"
+                    : "Pallavolo femminile, energia in campo"
               }
             />
             <span>{slide.label}</span>
@@ -191,7 +193,9 @@ export function Hero({
           <ArrowUpRightIcon />
         </a>
       )}
-      <span className="photo-note">FOTO DIMOSTRATIVE</span>
+      {slide.k !== "man" && (
+        <span className="photo-note">FOTO DIMOSTRATIVE</span>
+      )}
       <span className="hero-index">
         SCORRI PER SCOPRIRE <ArrowRightIcon />
       </span>
