@@ -1,5 +1,5 @@
 FOIANO PALLAVOLO — SITO COMPLETO — 14 PAGINE (versione 1.12)
-Destinazione: https://foianopallavolo.keyidea.it/
+Destinazione: https://www.foianopallavolo.it/ (radice del dominio, non una sottocartella)
 
 CARICAMENTO
 Prima di sovrascrivere, conserva una copia dei file attuali sul server.
@@ -7,7 +7,7 @@ Estrai il contenuto dello ZIP nella document root del sottodominio.
 Le pagine .html, la cartella assets e la cartella api devono stare allo stesso livello.
 Il sito funziona anche staticamente, ma per calendario, risultati e classifica della Serie C
 servono PHP e cURL attivi (api/fipav.php). Per controllare: apri
-https://foianopallavolo.keyidea.it/api/fipav.php, deve rispondere con dati (JSON).
+https://www.foianopallavolo.it/api/fipav.php, deve rispondere con dati (JSON).
 Senza PHP il sito mostra la copia dei dati salvata nel sito (aggiornata al 17/11/2026).
 Nessun database o Node.js necessario. Attiva HTTPS.
 
