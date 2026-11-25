@@ -69,6 +69,9 @@ I colori e i caratteri seguono la linea grafica (`docs/linea-grafica-foiano-pall
 ## Contenuti
 
 - **Squadre, notizie, storia, slide:** modifica i file in `src/data/`.
+- **Mascotte:** due civette (`mascotte-maschio.webp`, `mascotte-femmina.webp` in `public/assets/`), gestite da `src/components/Mascots.jsx`: maschio per Serie C e giovanili maschili, femmina per Prima Divisione e giovanili femminili, entrambe per Minivolley. Stanno nella fascia rossa in fondo alle pagine squadra e Squadre, e accanto al pulsante nella sezione Minivolley della home, mai sopra le foto.
+- **Loghi:** 50 anni a colori (testata Dal 1976) e chiaro (hero della home); comitati FIPAV Etruria e Toscana nella fascia «Campionati organizzati da» di Partite e risultati.
+- **Etichetta «Gara»:** ogni partita ha il campo `team` (`c`, `f`, `gm`, `gf`, `mini`); il calendario mostra la squadra del club (SERIE C MASCHILE, PRIMA DIV. FEMMINILE, …). Campi spiegati in `src/data/fixtures.js`.
 - **Calendari e rose:** `src/data/fixtures.js` è oggi **vuoto** (`FIXTURES`, `TEAM_ROSTERS`). Le partite e le rose compariranno quando verranno inserite; finché sono vuoti le pagine mostrano "calendario in aggiornamento".
 - **Foto:** sono dimostrative (indicato anche sul sito) e vanno sostituite con foto vere della società, con le liberatorie per i minorenni. Per cambiarle sostituisci i file in `public/assets/` mantenendo lo stesso nome.
 - **Moduli:** non c'è un server. Il pulsante "Prepara l'email" apre l'app di posta del visitatore con il messaggio già scritto (`mailto:`). Chi non ha un'app di posta configurata non riesce a inviare.

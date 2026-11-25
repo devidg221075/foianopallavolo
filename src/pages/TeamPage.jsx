@@ -7,6 +7,7 @@ import {
   PlusIcon,
   VolleyballIcon,
 } from "@phosphor-icons/react";
+import { Mascots } from "../components/Mascots";
 import { ASSET_BASE } from "../config";
 import { TEAM_PAGES } from "../data/teamPages";
 import { matchesUrl } from "../lib/routes";
@@ -295,6 +296,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
             <h2>{content.join}</h2>
             <p>{content.joinText}</p>
           </div>
+          <Mascots teamId={team.id} className="mascots-join" />
           <button className="button white" onClick={askInfo}>
             {isFirstTeam ? "Contatta il club" : "Chiedi informazioni"}{" "}
             <ArrowRightIcon />

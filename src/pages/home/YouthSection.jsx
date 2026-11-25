@@ -5,6 +5,7 @@ import {
   VolleyballIcon,
 } from "@phosphor-icons/react";
 import { Eyebrow } from "../../components/Eyebrow";
+import { Mascots } from "../../components/Mascots";
 import { ASSET_BASE } from "../../config";
 
 export function YouthSection({ openContact, setLightbox }) {
@@ -56,6 +57,7 @@ export function YouthSection({ openContact, setLightbox }) {
         <span className="small-note">
           Chiedi informazioni su gruppi, orari e modalità di prova.
         </span>
+        <Mascots teamId="mini" className="mascots-copy" />
       </div>
     </section>
   );

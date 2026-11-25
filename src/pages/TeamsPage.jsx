@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react";
+import { Mascots } from "../components/Mascots";
 import { ASSET_BASE } from "../config";
 import { TEAM_SLUGS } from "../data/teams";
 
@@ -245,6 +246,7 @@ export function TeamsPage({
             <h2>FACCIAMO SQUADRA.</h2>
             <p>Trova il tuo posto in campo.</p>
           </div>
+          <Mascots teamId="mini" className="mascots-join" />
           <button className="button white" onClick={() => openContact()}>
             Vieni a giocare <ArrowRightIcon />
           </button>

@@ -698,3 +698,59 @@
     width: 104px;
   }
 }
+
+/* Mascotte (civette): hanno spazi propri, non coprono mai le foto */
+.mascots {
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.mascots img {
+  height: 100%;
+  width: auto;
+}
+
+.mascots img + img {
+  margin-left: -9%;
+  height: 94%;
+}
+
+/* Fascia rossa "Il campo ci unisce / Facciamo squadra": la civetta sta in piedi sul bordo inferiore */
+.mascots-join {
+  position: relative;
+  z-index: 2;
+  align-self: flex-end;
+  flex-shrink: 0;
+  height: 300px;
+  margin: -70px 0 -35px;
+}
+
+@media (max-width: 900px) {
+  .mascots-join {
+    height: 200px;
+    margin: 22px 0 0;
+    justify-content: center;
+  }
+}
+
+/* Home, sezione Minivolley: accanto al pulsante */
+.youth-copy {
+  position: relative;
+}
+
+.mascots-copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 170px;
+}
+
+@media (max-width: 900px) {
+  .mascots-copy {
+    position: static;
+    height: 170px;
+    margin-top: 22px;
+    justify-content: center;
+  }
+}
