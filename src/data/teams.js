@@ -106,3 +106,10 @@ export const TEAMS = [
     group: "mini",
   },
 ];
+
+// Nome con cui il club compare nelle tabelle ufficiali FIPAV (serve per riconoscere "la nostra" squadra
+// quando si importano calendari e classifiche).
+export const OFFICIAL_CLUB_NAMES = {
+  c: "NORCINERIA TOSCANA FOIANO",
+  f: "MDT FOIANO PALLAVOLO",
+};
