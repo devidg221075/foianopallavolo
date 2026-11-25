@@ -89,10 +89,14 @@ export function NextMatches({ gotoCalendar }) {
                   </button>
                 </div>
                 <p className="fixture-pending">
-                  {item.id === "c"
-                    ? next?.home.includes("FOIANO")
-                      ? "In casa · Fonte FIPAV"
-                      : "In trasferta · Fonte FIPAV"
+                  {next
+                    ? (next.home.includes("FOIANO")
+                        ? "In casa"
+                        : "In trasferta") +
+                      " · " +
+                      (item.id === "c"
+                        ? "Fonte FIPAV"
+                        : "Fonte Comitato Etruria")
                     : "Calendario ufficiale in aggiornamento"}
                 </p>
               </article>

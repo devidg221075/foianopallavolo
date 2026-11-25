@@ -148,7 +148,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
                 </div>
                 <p>
                   {next
-                    ? next.round + " · Fonte FIPAV"
+                    ? next.round + " · Fonte " + (team.id === "c" ? "FIPAV" : "Comitato Etruria")
                     : "Il calendario ufficiale è in aggiornamento."}
                 </p>
                 <div className="detail-match-meta">

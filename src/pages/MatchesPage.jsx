@@ -510,8 +510,9 @@ export function MatchesPage({ openContact, openSponsors }) {
           <p>
             Serie C · Fonte FIPAV Toscana.{" "}
             {live ? "Collegamento aggiornato" : "Copia disponibile"}:{" "}
-            {new Date(updatedAt).toLocaleString("it-IT")}. Le altre squadre
-            attendono i calendari ufficiali.
+            {new Date(updatedAt).toLocaleString("it-IT")}. Prima Divisione
+            femminile: calendario del Comitato Etruria, risultati e classifica
+            in arrivo. Le altre squadre attendono i calendari ufficiali.
           </p>
           <button
             onClick={() => openContact("Informazioni partite e calendari")}

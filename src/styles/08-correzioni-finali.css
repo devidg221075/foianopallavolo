@@ -784,3 +784,20 @@
     height: 58%;
   }
 }
+
+/* Hero della home, prima slide: il giocatore in ritaglio sta sopra la scritta FOIANO e
+   la foto piccola non c'è, così non si sovrappone a nient'altro. */
+.slide-man .hero-inset {
+  display: none;
+}
+
+.slide-man .hero-athlete {
+  height: 73%;
+  object-position: center top;
+}
+
+@media (max-width: 900px) {
+  .slide-man .hero-athlete {
+    height: 62%;
+  }
+}

@@ -1,20 +1,12 @@
-// Calendario delle partite.
+// Partite delle squadre che non hanno (ancora) un collegamento FIPAV automatico:
+// la Prima Divisione femminile e le altre. I dati stanno in fixtures.json e si aggiornano con
+//   python3 scripts/calendario/importa-xlsx.py calendario_gare.xlsx
+// (la Serie C maschile invece arriva da FIPAV, vedi src/lib/fipav.js).
 //
-// Ogni partita è un oggetto con questi campi:
-//   id      identificativo unico, es. "c-2026-10-18"
-//   date    "AAAA-MM-GG"
-//   team    squadra del club a cui appartiene la gara (decide l'etichetta
-//           "Gara" nel calendario): "c" Serie C maschile, "f" Prima Div.
-//           femminile, "gm" Giovanili M, "gf" Giovanili F, "mini" Minivolley
-//   home    squadra di casa
-//   away    squadra ospite
-//   status  "played" per le gare giocate (mostra il punteggio), altro per le future
-//   score   es. "3-1" (solo se status è "played")
-//   time    es. "21:00" (facoltativo)
-//   venue   palestra (facoltativo)
-//   round   es. "Giornata 5" (facoltativo, appare accanto all'etichetta della gara)
-//
-// Finché l'elenco è vuoto le pagine mostrano "calendario in aggiornamento".
-export const FIXTURES = [];
+// Campi di una partita: id, team ("c", "f", "gm", "gf", "mini"), date "AAAA-MM-GG", time, home, away,
+// venue, round (es. "Giornata 9"), status ("scheduled" o "played"), score ("3–1"), sets, official.
+import fixtures from "./fixtures.json";
+
+export const FIXTURES = fixtures;
 
 export const TEAM_ROSTERS = {};

@@ -41,6 +41,39 @@ export const SHORT_NAMES = {
   "FIRENZE  PALLAVOLO 2026": "Firenze Pallavolo",
 };
 
+// Logo di una società a partire dal nome in tabella (serve per le gare che non arrivano da FIPAV).
+const LOGO_BY_NAME = {
+  "POLISPORTIVA SAVINESE": CLUB_LOGOS[225959],
+  "POL. REMO MASI": CLUB_LOGOS[226016],
+  "COLLEVOLLEY ASD": CLUB_LOGOS[226034],
+  "CORTONA VOLLEY VITTORINI COSTRUZIONI": CLUB_LOGOS[226127],
+  "TOSCANA GARDEN ARNO VOLLEY": CLUB_LOGOS[226215],
+  "PALLAVOLO CASCINA": CLUB_LOGOS[226240],
+  "NORCINERIA TOSCANA FOIANO": CLUB_LOGOS[226262],
+  "MDT FOIANO PALLAVOLO": CLUB_LOGOS[226262],
+  "FIRENZE VOLLEY": CLUB_LOGOS[226394],
+  "BAGLINI GROUP MIGLIARINO VOLLEY": CLUB_LOGOS[226485],
+  "ASD PALLAVOLO ROSIGNANO": CLUB_LOGOS[226514],
+  "FIRENZE PALLAVOLO 2026": CLUB_LOGOS[226609],
+  "M.C. CARRARA CARNI VOLLEY": CLUB_LOGOS[226653],
+  "INVICTA VOLLEYBALL": CLUB_LOGOS[226662],
+  "GRANDI TURRIS PISA": CLUB_LOGOS[226666],
+};
+
+// Completa le gare inserite a mano (src/data/fixtures.json) con loghi e campi mancanti.
+export const withLogos = (fixtures) =>
+  fixtures.map((fixture) => ({
+    firstReferee: null,
+    secondReferee: null,
+    ...fixture,
+    homeLogo:
+      fixture.homeLogo ||
+      LOGO_BY_NAME[fixture.home.replace(/\s+/g, " ").trim()],
+    awayLogo:
+      fixture.awayLogo ||
+      LOGO_BY_NAME[fixture.away.replace(/\s+/g, " ").trim()],
+  }));
+
 export const OUTCOME_LABELS = {
   won: "Vinta",
   lost: "Persa",
