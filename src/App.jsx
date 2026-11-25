@@ -5,6 +5,7 @@ import {
   currentTeamId,
   isClubPage,
   isContactPage,
+  isGalleryPage,
   isHistoryPage,
   isInnerPage,
   isMatchesPage,
@@ -15,6 +16,7 @@ import {
 } from "./lib/routes";
 import { ClubPage } from "./pages/ClubPage";
 import { ContactPage } from "./pages/ContactPage";
+import { GalleryPage } from "./pages/GalleryPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { MatchesPage } from "./pages/MatchesPage";
 import { SponsorPage } from "./pages/SponsorPage";
@@ -182,7 +184,9 @@ export function App() {
         />
       )}
       <main id="contenuto">
-        {isSponsorPage ? (
+        {isGalleryPage ? (
+          <GalleryPage />
+        ) : isSponsorPage ? (
           <SponsorPage openContact={openContact} />
         ) : isContactPage ? (
           <ContactPage />

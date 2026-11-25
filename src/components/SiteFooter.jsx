@@ -51,6 +51,7 @@ export function SiteFooter({ motionOff, openContact, openTeam, setMotionOff }) {
             Dal 1976
           </SiteLink>
           <SiteLink to="partite">Partite e risultati</SiteLink>
+          <SiteLink to="galleria">Galleria</SiteLink>
           <SiteLink to="club">Il club</SiteLink>
           <a href="/#news">News</a>
           <SiteLink to="sponsor">Sponsor</SiteLink>

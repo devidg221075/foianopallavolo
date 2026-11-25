@@ -14,6 +14,7 @@ const pages = [
   'minivolley',
   'dal-1976',
   'partite-risultati',
+  'galleria',
   'il-club',
   'sponsor',
   'contatti',

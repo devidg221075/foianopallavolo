@@ -14,6 +14,7 @@ export function MobileMenu({ openContact, setMobileMenuOpen }) {
         ["squadre", "Squadre"],
         ["storia", "Dal 1976"],
         ["prossime-partite", "Partite e risultati"],
+        ["galleria", "Galleria"],
         ["club", "Il club"],
         ["partner", "Sponsor"],
         ["contatti", "Contatti"],

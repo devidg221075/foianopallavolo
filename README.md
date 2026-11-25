@@ -43,6 +43,7 @@ docs/                  progetto, linea grafica e materiale di partenza
 | `/serie-c-maschile.html`, `/prima-divisione-femminile.html`, `/giovanili-maschili.html`, `/giovanili-femminili.html`, `/minivolley.html` | Pagina di ogni squadra |
 | `/dal-1976.html` | Storia, Loredano Vannuccini, rassegna stampa |
 | `/partite-risultati.html` | Calendari, risultati, classifiche |
+| `/galleria.html` | Galleria fotografica: indice degli album; `?album=<id>` apre un album |
 | `/il-club.html` | Società, percorsi, informazioni |
 | `/sponsor.html` | Sponsor e partnership |
 | `/contatti.html` | Recapiti e modulo email |
@@ -63,12 +64,14 @@ I fogli sono otto, numerati, e **vanno caricati in quest'ordine**: il CSS origin
 | `06-sponsor-contatti.css` | Pagine Sponsor e Contatti |
 | `07-partite-risultati.css` | Partite e risultati |
 | `08-correzioni-finali.css` | Correzioni finali e adattamenti |
+| `09-galleria.css` | Galleria fotografica e ritocco dell'intestazione |
 
 I colori e i caratteri seguono la linea grafica (`docs/linea-grafica-foiano-pallavolo.md`).
 
 ## Contenuti
 
 - **Squadre, notizie, storia, slide:** modifica i file in `src/data/`.
+- **Galleria:** album e categorie in `src/data/gallery.js` (istruzioni in testa al file), foto in `public/assets/galleria/<id-album>/` in due versioni per foto (`01.webp` grande, `01-t.webp` miniatura). Primo album: «FIPAV 3G».
 - **Mascotte:** due civette (`mascotte-maschio.webp`, `mascotte-femmina.webp` in `public/assets/`), gestite da `src/components/Mascots.jsx`: maschio per Serie C e giovanili maschili, femmina per Prima Divisione e giovanili femminili, entrambe per Minivolley. Stanno nella fascia rossa in fondo alle pagine squadra e Squadre, e accanto al pulsante nella sezione Minivolley della home, mai sopra le foto.
 - **Loghi:** 50 anni a colori (testata Dal 1976) e chiaro (hero della home); comitati FIPAV Etruria e Toscana nella fascia «Campionati organizzati da» di Partite e risultati.
 - **Etichetta «Gara»:** ogni partita ha il campo `team` (`c`, `f`, `gm`, `gf`, `mini`); il calendario mostra la squadra del club (SERIE C MASCHILE, PRIMA DIV. FEMMINILE, …). Campi spiegati in `src/data/fixtures.js`.

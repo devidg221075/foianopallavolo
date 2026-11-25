@@ -9,7 +9,9 @@ export function SiteLink({ to, children, className = "", ...h }) {
           ? "/sponsor.html"
           : to === "contatti"
             ? "/contatti.html"
-            : ["partite", "prossime-partite"].includes(to)
+            : to === "galleria"
+              ? "/galleria.html"
+              : ["partite", "prossime-partite"].includes(to)
               ? "/partite-risultati.html"
               : to === "club"
                 ? "/il-club.html"

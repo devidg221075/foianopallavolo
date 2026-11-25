@@ -9,6 +9,7 @@ import "./styles/05-storia-club-news.css";
 import "./styles/06-sponsor-contatti.css";
 import "./styles/07-partite-risultati.css";
 import "./styles/08-correzioni-finali.css";
+import "./styles/09-galleria.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

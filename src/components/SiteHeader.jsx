@@ -12,6 +12,7 @@ import {
   currentTeamId,
   isClubPage,
   isContactPage,
+  isGalleryPage,
   isHistoryPage,
   isInnerPage,
   isMatchesPage,
@@ -118,6 +119,12 @@ export function SiteHeader({
           aria-current={isMatchesPage ? "page" : undefined}
         >
           Partite e risultati
+        </SiteLink>
+        <SiteLink
+          to="galleria"
+          aria-current={isGalleryPage ? "page" : undefined}
+        >
+          Galleria
         </SiteLink>
         <SiteLink to="club" aria-current={isClubPage ? "page" : undefined}>
           Il club

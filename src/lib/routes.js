@@ -39,6 +39,10 @@ export const isContactPage = /\/contatti(?:\.html)?\/?$/.test(
   location.pathname,
 );
 
+export const isGalleryPage = /\/galleria(?:\.html)?\/?$/.test(
+  location.pathname,
+);
+
 export const isInnerPage =
   isTeamsPage ||
   !!currentTeamId ||
@@ -46,4 +50,5 @@ export const isInnerPage =
   isMatchesPage ||
   isClubPage ||
   isSponsorPage ||
-  isContactPage;
+  isContactPage ||
+  isGalleryPage;
