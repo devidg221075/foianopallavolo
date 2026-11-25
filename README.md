@@ -82,14 +82,20 @@ I colori e i caratteri seguono la linea grafica (`docs/linea-grafica-foiano-pall
 - **Moduli:** non c'è un server. Il pulsante "Prepara l'email" apre l'app di posta del visitatore con il messaggio già scritto (`mailto:`). Chi non ha un'app di posta configurata non riesce a inviare.
 - **Dati della società:** nessun dato ufficiale è stato inventato. Date, avversari, risultati, rose, staff e loghi sponsor aspettano conferma.
 
-## Prima della pubblicazione definitiva
+## Pubblicazione
 
-Il pacchetto è un'**anteprima temporanea**:
+Il sito non ha più `noindex`; `public/robots.txt` consente la scansione e `public/sitemap.xml` elenca le pagine di `https://www.foianopallavolo.it/`. Se cambia l'indirizzo, aggiorna `sitemap.xml` e `robots.txt`.
 
-- tutte le pagine hanno `noindex, nofollow` (nei file `*.html`);
-- `public/robots.txt` vieta la scansione.
+Per creare lo ZIP da caricare sul server:
 
-Queste impostazioni non proteggono la pagina con una password. Vanno tolte quando il sito diventa pubblico. Da rivedere anche: foto dimostrative, dati non confermati, informativa privacy e cookie.
+```bash
+npm run build
+python3 scripts/esporta-zip.py
+```
+
+Lo script imposta permessi 755/644 (un file con permessi 600 darebbe errore 403 sul server e l'immagine sembrerebbe sparita) e controlla che ogni immagine citata dal sito sia nello ZIP.
+
+Da rivedere prima del lancio: foto dimostrative, dati non confermati, informativa privacy e cookie.
 
 ## Provenienza e fedeltà
 

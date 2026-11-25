@@ -24,7 +24,10 @@ Serie C maschile: calendario, risultati, classifica e loghi da FIPAV.
 Prima Divisione femminile e altre squadre: calendari in attesa dei dati ufficiali.
 Foto della galleria: album FIPAV 3G e Foiano Pallavolo – Polisportiva Savinese (2025).
 
-ANTEPRIMA TEMPORANEA
-Tutte le pagine contengono noindex/nofollow; robots.txt vieta la scansione.
-Queste impostazioni non proteggono la pagina con password.
-Vanno riviste prima della pubblicazione definitiva.
+PUBBLICAZIONE
+Il sito è pronto per essere indicizzato: nessun noindex nelle pagine, robots.txt consente la
+scansione e sitemap.xml elenca le pagine con l'indirizzo https://www.foianopallavolo.it/.
+
+PERMESSI DEI FILE
+Cartelle 755 e file 644. Se un'immagine non si vede e il browser riceve "403", controlla i permessi
+di quel file sul server (un file con permessi 600 non è leggibile dal sito).
