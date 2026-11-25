@@ -1261,3 +1261,52 @@
     animation: none;
   }
 }
+
+/* Fascia "Campionati organizzati da" */
+.match-committees {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px 56px;
+  padding-block: 44px;
+  border-top: 1px solid #0001;
+}
+
+.match-committees h2 {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+  grid-column: 1 / -1;
+}
+
+.match-committees-logos {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.match-committees-logos img {
+  height: 110px;
+  width: auto;
+  object-fit: contain;
+}
+
+.match-committees p {
+  max-width: 44ch;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .match-committees {
+    grid-template-columns: 1fr;
+    padding-block: 32px;
+  }
+  .match-committees-logos {
+    gap: 24px;
+  }
+  .match-committees-logos img {
+    height: 84px;
+  }
+}

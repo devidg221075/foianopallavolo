@@ -16,7 +16,8 @@ export function FixtureList({ fixtures, emptyTitle, emptyText }) {
             </time>
             <div>
               <span>
-                {MATCH_TEAMS.find((team) => team.id === fixture.team)?.name}
+                {MATCH_TEAMS.find((team) => team.id === fixture.team)?.gara}
+                {fixture.round ? " · " + fixture.round : ""}
               </span>
               <h3>
                 {fixture.home}{" "}

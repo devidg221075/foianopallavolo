@@ -9,6 +9,8 @@ export const TEAM_SLUGS = {
 export const MATCH_TEAMS = [
   {
     id: "c",
+    gara: "SERIE C MASCHILE",
+    badge: "SERIE C",
     name: "Serie C maschile",
     short: "Serie C",
     label: "Prima squadra maschile",
@@ -16,6 +18,8 @@ export const MATCH_TEAMS = [
   },
   {
     id: "f",
+    gara: "PRIMA DIV. FEMMINILE",
+    badge: "1ª DIV. F",
     name: "Prima Divisione femminile",
     short: "1ª Divisione",
     label: "Prima squadra femminile",
@@ -23,6 +27,8 @@ export const MATCH_TEAMS = [
   },
   {
     id: "gm",
+    gara: "GIOVANILI MASCHILI",
+    badge: "GIOV. M",
     name: "Giovanili maschili",
     short: "Giovanili M",
     label: "Settore giovanile",
@@ -30,6 +36,8 @@ export const MATCH_TEAMS = [
   },
   {
     id: "gf",
+    gara: "GIOVANILI FEMMINILI",
+    badge: "GIOV. F",
     name: "Giovanili femminili",
     short: "Giovanili F",
     label: "Settore giovanile",
@@ -37,6 +45,8 @@ export const MATCH_TEAMS = [
   },
   {
     id: "mini",
+    gara: "MINIVOLLEY",
+    badge: "MINI",
     name: "Minivolley",
     short: "Minivolley",
     label: "Bambini e bambine",

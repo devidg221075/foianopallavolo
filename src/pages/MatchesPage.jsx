@@ -17,6 +17,19 @@ import { FIXTURES, TEAM_ROSTERS } from "../data/fixtures";
 import { MATCH_TEAMS } from "../data/teams";
 import { MONTH_NAMES, buildMonthGrid, seasonLabel } from "../lib/calendar";
 
+// Etichetta del giorno nel calendario: di quale squadra è la gara.
+function garaBadge(dayFixtures) {
+  if (!dayFixtures.length) return null;
+  const teamIds = [...new Set(dayFixtures.map((fixture) => fixture.team))];
+  const first = MATCH_TEAMS.find((team) => team.id === teamIds[0]);
+  return (
+    <small>
+      {first?.badge || "GARA"}
+      {teamIds.length > 1 ? " +" + (teamIds.length - 1) : ""}
+    </small>
+  );
+}
+
 export function MatchesPage({ openContact, openSponsors }) {
   var We;
   const today = new Date();
@@ -317,9 +330,11 @@ export function MatchesPage({ openContact, openSponsors }) {
                       }
                     >
                       <span>{item}</span>
-                      {teamFixtures.some(
-                        (teamFixture) => teamFixture.date === dateKey(item),
-                      ) && <small>GARA</small>}
+                      {garaBadge(
+                        teamFixtures.filter(
+                          (teamFixture) => teamFixture.date === dateKey(item),
+                        ),
+                      )}
                     </button>
                   ) : (
                     <div key={index} className="match-blank-day" />
@@ -417,6 +432,28 @@ export function MatchesPage({ openContact, openSponsors }) {
             Scopri {selectedTeam.name} <ArrowRightIcon />
           </a>
         )}
+      </section>
+      <section
+        className="match-committees teams-wrap"
+        aria-labelledby="committees-title"
+      >
+        <h2 id="committees-title">Campionati organizzati da</h2>
+        <div className="match-committees-logos">
+          <img
+            src="/assets/fipav-comitato-etruria.webp"
+            alt="FIPAV, Comitato Territoriale Etruria"
+            loading="lazy"
+          />
+          <img
+            src="/assets/fipav-comitato-toscana.webp"
+            alt="FIPAV, Comitato Regionale Toscana"
+            loading="lazy"
+          />
+        </div>
+        <p>
+          Calendari e risultati ufficiali dei campionati sono pubblicati dai
+          comitati FIPAV.
+        </p>
       </section>
       <aside className="match-sponsor teams-wrap">
         <div>
