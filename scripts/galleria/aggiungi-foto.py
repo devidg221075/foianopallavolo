@@ -46,7 +46,11 @@ def main():
     dest = os.path.join(RADICE, "public", "assets", "galleria", album_id)
     os.makedirs(dest, exist_ok=True)
 
-    esistenti = sorted(f for f in os.listdir(dest) if re.fullmatch(r"\d+\.webp", f))
+    # ordine numerico (non alfabetico: "100" viene dopo "99")
+    esistenti = sorted(
+        (f for f in os.listdir(dest) if re.fullmatch(r"\d+\.webp", f)),
+        key=lambda f: int(f[:-5]),
+    )
     prossimo = int(esistenti[-1][:-5]) + 1 if esistenti else 1
     note = [impronta(Image.open(os.path.join(dest, f[:-5] + "-t.webp"))) for f in esistenti]
 
@@ -63,6 +67,7 @@ def main():
             continue
         note.append(imp)
         num = "%02d" % prossimo
+        assert not os.path.exists(os.path.join(dest, num + ".webp")), "non sovrascrivo " + num
         grande = img.copy()
         grande.thumbnail((1800, 1800), Image.LANCZOS)
         grande.save(os.path.join(dest, num + ".webp"), quality=78, method=6)
