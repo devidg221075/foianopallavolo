@@ -1,6 +1,6 @@
 import { featuredNews } from "./news";
 
-export const HERO_SLIDES = [
+const ALL_HERO_SLIDES = [
   {
     k: "man",
     eyebrow: "Foiano Pallavolo · Dal 1976",
@@ -34,7 +34,7 @@ export const HERO_SLIDES = [
 ];
 
 if (featuredNews) {
-  HERO_SLIDES.push({
+  ALL_HERO_SLIDES.push({
     k: "news",
     news: featuredNews,
     ...featuredNews.hero,
@@ -42,3 +42,13 @@ if (featuredNews) {
     href: "/dal-1976.html#" + featuredNews.id,
   });
 }
+
+// Slide mostrate oggi nella hero. Per ora c'è solo la foto di squadra della Serie C ("man").
+// Quando ci saranno le foto di Prima Divisione femminile, giovanili e Minivolley, aggiungi qui
+// i loro codici: "woman" (femminile), "young" (giovanili e Minivolley), "news" (notizia in evidenza).
+// Con più di una slide tornano da soli frecce, pausa e scorrimento automatico.
+const ENABLED_HERO_SLIDES = ["man"];
+
+export const HERO_SLIDES = ALL_HERO_SLIDES.filter((slide) =>
+  ENABLED_HERO_SLIDES.includes(slide.k),
+);

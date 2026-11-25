@@ -94,7 +94,15 @@ export function App() {
     localStorage.setItem("foiano-motion", motionOff ? "off" : "on");
   }, [motionOff]);
   useEffect(() => {
-    if (isInnerPage || heroPaused || motionOff || dialog || lightbox) return;
+    if (
+      isInnerPage ||
+      HERO_SLIDES.length < 2 ||
+      heroPaused ||
+      motionOff ||
+      dialog ||
+      lightbox
+    )
+      return;
     const timer = setInterval(
       () => setSlideIndex((current) => (current + 1) % HERO_SLIDES.length),
       8000,

@@ -124,63 +124,65 @@ export function Hero({
           </div>
         </>
       )}
-      <div className="hero-controls">
-        <span className="slide-number">
-          <strong>{String(slideIndex + 1).padStart(2, "0")}</strong>
-          <i>/{String(HERO_SLIDES.length).padStart(2, "0")}</i>
-        </span>
-        <div className="slide-track">
-          {HERO_SLIDES.map((slideItem, index) => (
-            <button
-              key={slideItem.k}
-              className={slideIndex === index ? "active" : ""}
-              aria-label={
-                slideItem.news
-                  ? "Vai alla notizia in evidenza"
-                  : "Vai alla foto " + (index + 1)
-              }
-              aria-current={slideIndex === index ? "true" : undefined}
-              onClick={() => setSlideIndex(index)}
-            >
-              <span
-                key={slideIndex === index ? slideIndex + "active" : index}
-                style={{
-                  animationPlayState:
-                    heroPaused || motionOff ? "paused" : "running",
-                }}
-              />
-            </button>
-          ))}
+      {HERO_SLIDES.length > 1 && (
+        <div className="hero-controls">
+          <span className="slide-number">
+            <strong>{String(slideIndex + 1).padStart(2, "0")}</strong>
+            <i>/{String(HERO_SLIDES.length).padStart(2, "0")}</i>
+          </span>
+          <div className="slide-track">
+            {HERO_SLIDES.map((slideItem, index) => (
+              <button
+                key={slideItem.k}
+                className={slideIndex === index ? "active" : ""}
+                aria-label={
+                  slideItem.news
+                    ? "Vai alla notizia in evidenza"
+                    : "Vai alla foto " + (index + 1)
+                }
+                aria-current={slideIndex === index ? "true" : undefined}
+                onClick={() => setSlideIndex(index)}
+              >
+                <span
+                  key={slideIndex === index ? slideIndex + "active" : index}
+                  style={{
+                    animationPlayState:
+                      heroPaused || motionOff ? "paused" : "running",
+                  }}
+                />
+              </button>
+            ))}
+          </div>
+          <button
+            aria-label="Foto precedente"
+            onClick={() =>
+              setSlideIndex(
+                (slideIndex + HERO_SLIDES.length - 1) % HERO_SLIDES.length,
+              )
+            }
+          >
+            <CaretLeftIcon weight="bold" />
+          </button>
+          <button
+            aria-label={
+              heroPaused ? "Riprendi slideshow" : "Metti in pausa slideshow"
+            }
+            onClick={() => setHeroPaused((paused) => !paused)}
+          >
+            {heroPaused ? (
+              <PlayIcon weight="fill" size={16} />
+            ) : (
+              <PauseIcon weight="fill" size={16} />
+            )}
+          </button>
+          <button
+            aria-label="Foto successiva"
+            onClick={() => setSlideIndex((slideIndex + 1) % HERO_SLIDES.length)}
+          >
+            <CaretRightIcon weight="bold" />
+          </button>
         </div>
-        <button
-          aria-label="Foto precedente"
-          onClick={() =>
-            setSlideIndex(
-              (slideIndex + HERO_SLIDES.length - 1) % HERO_SLIDES.length,
-            )
-          }
-        >
-          <CaretLeftIcon weight="bold" />
-        </button>
-        <button
-          aria-label={
-            heroPaused ? "Riprendi slideshow" : "Metti in pausa slideshow"
-          }
-          onClick={() => setHeroPaused((paused) => !paused)}
-        >
-          {heroPaused ? (
-            <PlayIcon weight="fill" size={16} />
-          ) : (
-            <PauseIcon weight="fill" size={16} />
-          )}
-        </button>
-        <button
-          aria-label="Foto successiva"
-          onClick={() => setSlideIndex((slideIndex + 1) % HERO_SLIDES.length)}
-        >
-          <CaretRightIcon weight="bold" />
-        </button>
-      </div>
+      )}
       {featuredNews && !slide.news && (
         <a
           className="hero-news-shortcut"
