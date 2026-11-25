@@ -678,3 +678,23 @@
 .scoreboard:before {
   display: none;
 }
+
+/* Logo 50 anni nell'hero della home (versione chiara, su fondo rosso) */
+.hero-50 {
+  position: absolute;
+  z-index: 3;
+  top: 10px;
+  left: min(41%, 590px);
+  width: clamp(130px, 10.5vw, 160px);
+  height: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero-50 {
+    top: 18px;
+    right: 18px;
+    left: auto;
+    width: 104px;
+  }
+}

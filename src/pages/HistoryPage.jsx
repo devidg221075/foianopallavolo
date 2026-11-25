@@ -43,6 +43,14 @@ export function HistoryPage({ openContact }) {
             La passione resta.
           </p>
         </div>
+        <div className="history-hero-50">
+          <img
+            src="/assets/logo-50-colori.webp"
+            alt="50 anni di Foiano Pallavolo, 1976–2026"
+            width="2000"
+            height="931"
+          />
+        </div>
         <span className="teams-photo-note">
           FOTO DIMOSTRATIVA · NON D’ARCHIVIO
         </span>

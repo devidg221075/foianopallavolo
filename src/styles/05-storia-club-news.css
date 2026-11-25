@@ -648,3 +648,33 @@
     font-size: 13px;
   }
 }
+
+/* Logo 50 anni nella testata di Dal 1976: versione a colori su targa bianca */
+.history-hero-50 {
+  position: absolute;
+  z-index: 2;
+  top: 34px;
+  right: 5.2%;
+  width: clamp(210px, 19vw, 280px);
+  padding: 12px 20px;
+  background: #fff;
+  transform: skewX(-10deg);
+}
+
+.history-hero-50 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: skewX(10deg);
+}
+
+@media (max-width: 760px) {
+  .history-hero-50 {
+    top: auto;
+    right: auto;
+    left: 24px;
+    bottom: 22px;
+    width: 180px;
+    padding: 9px 14px;
+  }
+}
