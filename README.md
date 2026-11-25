@@ -71,7 +71,7 @@ I colori e i caratteri seguono la linea grafica (`docs/linea-grafica-foiano-pall
 ## Contenuti
 
 - **Squadre, notizie, storia, slide:** modifica i file in `src/data/`.
-- **Galleria:** album e categorie in `src/data/gallery.js` (istruzioni in testa al file), foto in `public/assets/galleria/<id-album>/` in due versioni per foto (`01.webp` grande, `01-t.webp` miniatura). Primo album: «FIPAV 3G».
+- **Galleria:** album e categorie in `src/data/gallery.js` (istruzioni in testa al file), foto in `public/assets/galleria/<id-album>/` in due versioni per foto (`01.webp` grande, `01-t.webp` miniatura). Primo album: «FIPAV 3G». Per aggiungere foto a un album esistente: `python3 scripts/galleria/aggiungi-foto.py <id-album> <cartella-foto>` (serve `python3 -m pip install pillow`): converte, salta le copie, numera e aggiorna `gallery.js`.
 - **Mascotte:** due civette (`mascotte-maschio.webp`, `mascotte-femmina.webp` in `public/assets/`), gestite da `src/components/Mascots.jsx`: maschio per Serie C e giovanili maschili, femmina per Prima Divisione e giovanili femminili, entrambe per Minivolley. Stanno nella fascia rossa in fondo alle pagine squadra e Squadre, e accanto al pulsante nella sezione Minivolley della home, mai sopra le foto.
 - **Loghi:** 50 anni a colori (testata Dal 1976) e chiaro (hero della home); comitati FIPAV Etruria e Toscana nella fascia «Campionati organizzati da» di Partite e risultati.
 - **Etichetta «Gara»:** ogni partita ha il campo `team` (`c`, `f`, `gm`, `gf`, `mini`); il calendario mostra la squadra del club (SERIE C MASCHILE, PRIMA DIV. FEMMINILE, …). Campi spiegati in `src/data/fixtures.js`.
