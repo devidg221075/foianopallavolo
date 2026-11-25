@@ -26,16 +26,25 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
   return (
     <div className={"teams-page team-detail detail-" + team.id}>
       <section className="teams-hero on-red" aria-labelledby="team-title">
-        <img
-          className="teams-hero-photo"
-          src={ASSET_BASE + (isMini ? "youth" : team.image) + ".webp"}
-          alt={
-            isMini
-              ? "Bambini e bambine durante un allenamento"
-              : team.name + " in palestra"
-          }
-          fetchPriority="high"
-        />
+        {team.id === "c" ? (
+          <img
+            className="hero-cutout"
+            src={ASSET_BASE + "giocatore-17.webp"}
+            alt="Giocatore della Serie C maschile in salto, di spalle, con il numero 17"
+            fetchPriority="high"
+          />
+        ) : (
+          <img
+            className="teams-hero-photo"
+            src={ASSET_BASE + (isMini ? "youth" : team.image) + ".webp"}
+            alt={
+              isMini
+                ? "Bambini e bambine durante un allenamento"
+                : team.name + " in palestra"
+            }
+            fetchPriority="high"
+          />
+        )}
         <div className="teams-hero-red" />
         <div className="teams-hero-copy">
           <div className="teams-breadcrumb">
@@ -58,7 +67,9 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
             <ArrowUpRightIcon />
           </a>
         </div>
-        <span className="teams-photo-note">FOTO DIMOSTRATIVE</span>
+        {team.id !== "c" && (
+          <span className="teams-photo-note">FOTO DIMOSTRATIVE</span>
+        )}
       </section>
       <nav
         className="teams-section-nav"
@@ -224,14 +235,24 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
         </section>
       )}
       <section className="detail-editorial teams-wrap">
-        <div className="detail-editorial-photo" data-reveal>
-          <img
-            src={ASSET_BASE + content.photo + ".webp"}
-            alt={content.photoAlt}
-            loading="lazy"
-          />
-          <span>FOTO DIMOSTRATIVA</span>
-        </div>
+        {team.id === "c" ? (
+          <div className="detail-editorial-photo cutout" data-reveal>
+            <img
+              src={ASSET_BASE + "giocatore-palleggio.webp"}
+              alt="Giocatore della Serie C maschile in palleggio, con la maglia Norcineria Toscana"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div className="detail-editorial-photo" data-reveal>
+            <img
+              src={ASSET_BASE + content.photo + ".webp"}
+              alt={content.photoAlt}
+              loading="lazy"
+            />
+            <span>FOTO DIMOSTRATIVA</span>
+          </div>
+        )}
         <div className="detail-editorial-copy" data-reveal>
           <div className="teams-kicker">
             {isFirstTeam

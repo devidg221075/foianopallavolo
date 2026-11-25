@@ -754,3 +754,33 @@
     justify-content: center;
   }
 }
+
+/* Giocatori in ritaglio (Serie C): nell'hero della pagina e nella sezione editoriale */
+.hero-cutout {
+  position: absolute;
+  z-index: 1;
+  right: 7%;
+  bottom: 0;
+  height: 97%;
+  width: auto;
+  pointer-events: none;
+}
+
+.detail-editorial-photo.cutout {
+  display: flex;
+  justify-content: center;
+  background: var(--red) url(/assets/court.webp) center/cover;
+}
+
+.detail-editorial-photo.cutout img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .hero-cutout {
+    right: 3%;
+    height: 58%;
+  }
+}

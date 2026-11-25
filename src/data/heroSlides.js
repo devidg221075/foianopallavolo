@@ -5,7 +5,7 @@ export const HERO_SLIDES = [
     k: "man",
     eyebrow: "Foiano Pallavolo · Dal 1976",
     lines: ["IL NOSTRO", "GIOCO.", "LA NOSTRA", "PASSIONE."],
-    image: "hero-man",
+    image: "giocatore-schiacciata",
     small: "block",
     label: "Serie C maschile",
     cta: "Le nostre squadre",
