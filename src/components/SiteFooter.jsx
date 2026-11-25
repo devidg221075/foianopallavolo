@@ -74,10 +74,37 @@ export function SiteFooter({ motionOff, openContact, openTeam, setMotionOff }) {
           riservati
         </span>
         <span className="footer-version">
-          Versione sito 1.5{" "}
+          Versione sito 1.12{" "}
           <details>
             <summary>Changelog</summary>
             <div>
+              <strong>Versione 1.12</strong>
+              <p>
+                Galleria con album e categorie (FIPAV 3G, Foiano – Savinese), logo
+                dei 50 anni, mascotte, comitati FIPAV e etichetta della squadra
+                su ogni gara.
+              </p>
+              <strong>Versione 1.11</strong>
+              <p>Galleria per squadra con filtri e foto ingrandibili.</p>
+              <strong>Versione 1.10</strong>
+              <p>
+                Primo e secondo arbitro nei dettagli gara, quando presenti nella
+                fonte FIPAV.
+              </p>
+              <strong>Versione 1.9</strong>
+              <p>
+                Classifica in Home e popup con quozienti set e punti condivisa
+                con Partite e risultati.
+              </p>
+              <strong>Versione 1.8</strong>
+              <p>
+                Loghi più grandi, dettaglio partita affiancato al calendario e
+                avversari nelle celle.
+              </p>
+              <strong>Versione 1.7</strong>
+              <p>Loghi ufficiali avversari e calendario con colori e risultati.</p>
+              <strong>Versione 1.6</strong>
+              <p>Calendario, risultati e classifica Serie C collegati a FIPAV.</p>
               <strong>Versione 1.5</strong>
               <p>Regole di contrasto consolidate e verifiche mobile.</p>
               <strong>Versione 1.4</strong>

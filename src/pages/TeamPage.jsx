@@ -7,13 +7,18 @@ import {
   PlusIcon,
   VolleyballIcon,
 } from "@phosphor-icons/react";
+import { ClubLogo } from "../components/ClubLogo";
 import { Mascots } from "../components/Mascots";
 import { ASSET_BASE } from "../config";
 import { TEAM_PAGES } from "../data/teamPages";
+import { useFipav } from "../hooks/useFipav";
+import { nextFixture, opponentLogo, opponentName } from "../lib/fipav";
 import { matchesUrl } from "../lib/routes";
 
 export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
   const content = TEAM_PAGES[team.id];
+  const { fixtures } = useFipav();
+  const next = nextFixture(fixtures, team.id);
   const isFirstTeam = ["c", "f"].includes(team.id);
   const isMini = team.id === "mini";
   const sectionId = isFirstTeam ? "la-stagione" : "il-percorso";
@@ -69,6 +74,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
               ? "Giocare e crescere"
               : "Il percorso"}
         </a>
+        <a href="/galleria.html">Galleria</a>
         <a href="#informazioni">
           {isMini ? "Per le famiglie" : "Informazioni"}
         </a>
@@ -115,27 +121,38 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
                   </div>
                   <b>VS</b>
                   <div>
-                    <VolleyballIcon weight="thin" />
+                    <ClubLogo src={opponentLogo(next)} />
                     <span>
-                      Avversario
-                      <br />
-                      da confermare
+                      {next ? (
+                        opponentName(next)
+                      ) : (
+                        <>
+                          Avversario
+                          <br />
+                          da confermare
+                        </>
+                      )}
                     </span>
                   </div>
                 </div>
-                <p>Il calendario ufficiale è in aggiornamento.</p>
+                <p>
+                  {next
+                    ? next.round + " · Fonte FIPAV"
+                    : "Il calendario ufficiale è in aggiornamento."}
+                </p>
                 <div className="detail-match-meta">
                   <span>
                     <CalendarBlankIcon />
-                    Data da confermare
+                    {next?.date.split("-").reverse().join("/") ||
+                      "Data da confermare"}
                   </span>
                   <span>
                     <ClockIcon />
-                    Orario da confermare
+                    {next?.time || "Orario da confermare"}
                   </span>
                   <span>
                     <MapPinIcon />
-                    Campo da confermare
+                    {next?.venue || "Campo da confermare"}
                   </span>
                 </div>
                 <a className="button white" href={matchesUrl(team.id)}>

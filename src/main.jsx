@@ -10,6 +10,7 @@ import "./styles/06-sponsor-contatti.css";
 import "./styles/07-partite-risultati.css";
 import "./styles/08-correzioni-finali.css";
 import "./styles/09-galleria.css";
+import "./styles/10-fipav.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeftIcon,
-  ArrowRightIcon,
   CaretLeftIcon,
   CaretRightIcon,
-  ImagesIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { AlbumCard } from "../components/AlbumCard";
 import { PageHero } from "../components/PageHero";
 import {
   ALBUMS,
@@ -15,8 +14,6 @@ import {
   albumThumbSrc,
   photoAlt,
 } from "../data/gallery";
-
-const photoCount = (n) => n + (n === 1 ? " foto" : " foto");
 
 export function GalleryPage() {
   const albumId = new URLSearchParams(location.search).get("album");
@@ -53,37 +50,9 @@ function AlbumIndex() {
             {category.label}
           </h2>
           <div className="gallery-albums">
-            {albums.map((album) => {
-              const cover =
-                album.photos.find((photo) => photo.file === album.cover) ||
-                album.photos[0];
-              return (
-                <a
-                  key={album.id}
-                  className="gallery-album-card"
-                  href={"/galleria.html?album=" + album.id}
-                >
-                  <span className="gallery-album-image">
-                    <img
-                      src={albumThumbSrc(album, cover)}
-                      alt=""
-                      loading="lazy"
-                    />
-                  </span>
-                  <span className="gallery-album-body">
-                    <strong>{album.title}</strong>
-                    <small>
-                      <ImagesIcon />
-                      {album.date ? album.date + " · " : ""}
-                      {photoCount(album.photos.length)}
-                    </small>
-                    <span className="gallery-album-go">
-                      Apri l’album <ArrowRightIcon />
-                    </span>
-                  </span>
-                </a>
-              );
-            })}
+            {albums.map((album) => (
+              <AlbumCard key={album.id} album={album} />
+            ))}
           </div>
         </section>
       ))}
@@ -94,7 +63,9 @@ function AlbumIndex() {
 function AlbumView({ album }) {
   const [open, setOpen] = useState(null);
   const triggerRef = useRef(null);
-  const category = GALLERY_CATEGORIES.find((item) => item.id === album.category);
+  const category = GALLERY_CATEGORIES.find(
+    (item) => item.id === album.category,
+  );
   return (
     <div className="gallery-album teams-wrap">
       <a className="text-link gallery-back" href="/galleria.html">
@@ -105,7 +76,9 @@ function AlbumView({ album }) {
       <p className="gallery-album-desc">{album.description}</p>
       <div
         className="gallery-grid"
-        style={album.rowHeight ? { "--row-d": album.rowHeight + "px" } : undefined}
+        style={
+          album.rowHeight ? { "--row-d": album.rowHeight + "px" } : undefined
+        }
       >
         {album.photos.map((photo, index) => (
           <button
@@ -216,7 +189,10 @@ function Lightbox({ album, index, setIndex, returnFocus }) {
         </button>
       )}
       <figure>
-        <img src={albumPhotoSrc(album, photo)} alt={photoAlt(album, photo, index)} />
+        <img
+          src={albumPhotoSrc(album, photo)}
+          alt={photoAlt(album, photo, index)}
+        />
         <figcaption>
           <span>{album.title}</span>
           <span>

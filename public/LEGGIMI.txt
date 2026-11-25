@@ -1,0 +1,30 @@
+FOIANO PALLAVOLO — SITO COMPLETO — 14 PAGINE (versione 1.12)
+Destinazione: https://foianopallavolo.keyidea.it/
+
+CARICAMENTO
+Prima di sovrascrivere, conserva una copia dei file attuali sul server.
+Estrai il contenuto dello ZIP nella document root del sottodominio.
+Le pagine .html, la cartella assets e la cartella api devono stare allo stesso livello.
+Il sito funziona anche staticamente, ma per calendario, risultati e classifica della Serie C
+servono PHP e cURL attivi (api/fipav.php). Per controllare: apri
+https://foianopallavolo.keyidea.it/api/fipav.php, deve rispondere con dati (JSON).
+Senza PHP il sito mostra la copia dei dati salvata nel sito (aggiornata al 17/11/2026).
+Nessun database o Node.js necessario. Attiva HTTPS.
+
+PAGINE
+/ = Home con prossime partite, calendario, classifica, galleria e news
+/galleria.html = Galleria fotografica divisa in categorie e album (?album=<id>)
+/partite-risultati.html = Calendari, risultati e classifiche
+/squadre.html, /serie-c-maschile.html, /prima-divisione-femminile.html,
+/giovanili-maschili.html, /giovanili-femminili.html, /minivolley.html = Squadre
+/dal-1976.html, /il-club.html, /sponsor.html, /contatti.html
+
+CONTENUTI
+Serie C maschile: calendario, risultati, classifica e loghi da FIPAV.
+Prima Divisione femminile e altre squadre: calendari in attesa dei dati ufficiali.
+Foto della galleria: album FIPAV 3G e Foiano Pallavolo – Polisportiva Savinese (2025).
+
+ANTEPRIMA TEMPORANEA
+Tutte le pagine contengono noindex/nofollow; robots.txt vieta la scansione.
+Queste impostazioni non proteggono la pagina con password.
+Vanno riviste prima della pubblicazione definitiva.

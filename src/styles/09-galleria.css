@@ -272,3 +272,7 @@
 .gallery-index section + section {
   margin-top: 70px;
 }
+
+.gallery-home {
+  padding-block: 20px 70px;
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
@@ -11,27 +11,42 @@ import {
   ShieldCheckIcon,
   VolleyballIcon,
 } from "@phosphor-icons/react";
+import { ClubLogo } from "../components/ClubLogo";
 import { EmptyState } from "../components/EmptyState";
 import { FixtureList } from "../components/FixtureList";
-import { FIXTURES, TEAM_ROSTERS } from "../data/fixtures";
+import { MatchDetail } from "../components/MatchDetail";
+import { StandingsTable } from "../components/StandingsTable";
 import { MATCH_TEAMS } from "../data/teams";
+import { useFipav } from "../hooks/useFipav";
 import { MONTH_NAMES, buildMonthGrid, seasonLabel } from "../lib/calendar";
+import {
+  FIPAV_CLASSIFICA_URL,
+  FIPAV_GIRONE_URL,
+  OUTCOME_LABELS,
+  nextFixture,
+  opponentLogo,
+  opponentName,
+  opponentShortName,
+  outcome,
+} from "../lib/fipav";
 
-// Etichetta del giorno nel calendario: di quale squadra è la gara.
-function garaBadge(dayFixtures) {
-  if (!dayFixtures.length) return null;
-  const teamIds = [...new Set(dayFixtures.map((fixture) => fixture.team))];
-  const first = MATCH_TEAMS.find((team) => team.id === teamIds[0]);
+const GARA_LABEL = (teamId) =>
+  MATCH_TEAMS.find((team) => team.id === teamId)?.gara || "PARTITA";
+
+function OutcomeLegend() {
   return (
-    <small>
-      {first?.badge || "GARA"}
-      {teamIds.length > 1 ? " +" + (teamIds.length - 1) : ""}
-    </small>
+    <div className="outcome-legend" aria-label="Legenda calendario">
+      {["won", "lost", "scheduled"].map((key) => (
+        <span className={"outcome-" + key} key={key}>
+          {OUTCOME_LABELS[key]}
+        </span>
+      ))}
+    </div>
   );
 }
 
 export function MatchesPage({ openContact, openSponsors }) {
-  var We;
+  const { fixtures, standings, updatedAt, live } = useFipav();
   const today = new Date();
   const params = new URLSearchParams(location.search);
   const [teamFilter, setTeamFilter] = useState(
@@ -49,32 +64,31 @@ export function MatchesPage({ openContact, openSponsors }) {
   );
   const [selectedDay, setSelectedDay] = useState(null);
   const [layout, setLayout] = useState("mese");
+  const [selectedId, setSelectedId] = useState(null);
   const selectedTeam = MATCH_TEAMS.find((team) => team.id === teamFilter);
-  const teamFixtures = FIXTURES.filter(
-    (item) => teamFilter === "tutte" || item.team === teamFilter,
+  const teamFixtures = fixtures.filter(
+    (fixture) => teamFilter === "tutte" || fixture.team === teamFilter,
   );
   const dateKey = (day) =>
     `${visibleMonth.getFullYear()}-${String(visibleMonth.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-  const monthFixtures = teamFixtures.filter((teamFixture) => {
-    return (
-      teamFixture.date?.startsWith(dateKey(1).slice(0, 7)) &&
-      (!selectedDay || teamFixture.date === dateKey(selectedDay))
-    );
-  });
+  const monthFixtures = teamFixtures.filter(
+    (fixture) =>
+      fixture.date?.startsWith(dateKey(1).slice(0, 7)) &&
+      (!selectedDay || fixture.date === dateKey(selectedDay)),
+  );
+  const focusFixture =
+    monthFixtures.find((fixture) => fixture.id === selectedId) ||
+    monthFixtures.find((fixture) => fixture.status !== "played") ||
+    monthFixtures[0] ||
+    null;
   const listFixtures =
     view === "risultati"
-      ? teamFixtures.filter((teamFixture) => teamFixture.status === "played")
-      : monthFixtures.filter(
-          (monthFixture) => monthFixture.status !== "played",
-        );
+      ? teamFixtures.filter((fixture) => fixture.status === "played")
+      : monthFixtures;
   useEffect(() => {
     const query = new URLSearchParams();
-    if (teamFilter !== "tutte") {
-      query.set("squadra", teamFilter);
-    }
-    if (view !== "calendario") {
-      query.set("vista", view);
-    }
+    if (teamFilter !== "tutte") query.set("squadra", teamFilter);
+    if (view !== "calendario") query.set("vista", view);
     history.replaceState(
       null,
       "",
@@ -86,10 +100,12 @@ export function MatchesPage({ openContact, openSponsors }) {
       (month) => new Date(month.getFullYear(), month.getMonth() + delta, 1),
     );
     setSelectedDay(null);
+    setSelectedId(null);
   };
   const selectTeam = (teamId) => {
     setTeamFilter(teamId);
     setSelectedDay(null);
+    setSelectedId(null);
   };
   return (
     <div className="matches-page">
@@ -141,56 +157,69 @@ export function MatchesPage({ openContact, openSponsors }) {
             </h2>
           </div>
           <span className="data-pending">
-            <span /> Calendari in aggiornamento
+            <span /> Serie C · Girone A
           </span>
         </div>
         <div className="headline-matches">
-          {MATCH_TEAMS.slice(0, 2).map((team, index) => (
-            <article
-              key={team.id}
-              className={"headline-match " + (index === 0 ? "on-red" : "")}
-            >
-              <div className="headline-match-label">
-                <span>0{index + 1} / PROSSIMO INCONTRO</span>
-                <VolleyballIcon size={26} />
-              </div>
-              <h3>{team.name}</h3>
-              <div className="headline-clubs">
-                <img
-                  src={
-                    "/assets/logo-" +
-                    (index === 0 ? "bianco" : "rosso") +
-                    ".png"
-                  }
-                  alt="Foiano Pallavolo"
-                />
-                <strong>FOIANO</strong>
-                <span>VS</span>
-                <div>
-                  Avversario
-                  <br />
-                  <b>da confermare</b>
-                </div>
-              </div>
-              <div className="headline-match-meta">
-                <span>
-                  <CalendarBlankIcon /> Data da confermare
-                </span>
-                <span>
-                  <ClockIcon /> Orario da confermare
-                </span>
-              </div>
-              <a
-                href="#calendario"
-                onClick={() => {
-                  selectTeam(team.id);
-                  setView("calendario");
-                }}
+          {MATCH_TEAMS.slice(0, 2).map((team, index) => {
+            const next = nextFixture(fixtures, team.id);
+            return (
+              <article
+                key={team.id}
+                className={"headline-match " + (index === 0 ? "on-red" : "")}
               >
-                Segui {team.short} <ArrowRightIcon />
-              </a>
-            </article>
-          ))}
+                <div className="headline-match-label">
+                  <span>0{index + 1} / PROSSIMO INCONTRO</span>
+                  <VolleyballIcon size={26} />
+                </div>
+                <h3>{team.name}</h3>
+                <div className="headline-clubs">
+                  <img
+                    src={
+                      "/assets/logo-" +
+                      (index === 0 ? "bianco" : "rosso") +
+                      ".png"
+                    }
+                    alt="Foiano Pallavolo"
+                  />
+                  <strong>
+                    FOIANO
+                    <small>
+                      {next
+                        ? next.home.includes("FOIANO")
+                          ? " · IN CASA"
+                          : " · TRASFERTA"
+                        : ""}
+                    </small>
+                  </strong>
+                  <span>VS</span>
+                  <div className="headline-opponent">
+                    <ClubLogo src={opponentLogo(next)} />
+                    {next ? opponentName(next) : "Avversario da confermare"}
+                  </div>
+                </div>
+                <div className="headline-match-meta">
+                  <span>
+                    <CalendarBlankIcon />{" "}
+                    {next?.date.split("-").reverse().join("/") ||
+                      "Data da confermare"}
+                  </span>
+                  <span>
+                    <ClockIcon /> {next?.time || "Orario da confermare"}
+                  </span>
+                </div>
+                <a
+                  href="#calendario"
+                  onClick={() => {
+                    selectTeam(team.id);
+                    setView("calendario");
+                  }}
+                >
+                  Segui {team.short} <ArrowRightIcon />
+                </a>
+              </article>
+            );
+          })}
         </div>
       </section>
       <section className="match-center teams-wrap" id="calendario">
@@ -222,14 +251,14 @@ export function MatchesPage({ openContact, openSponsors }) {
             ["calendario", "Calendario", CalendarBlankIcon],
             ["risultati", "Risultati", VolleyballIcon],
             ["classifiche", "Classifiche", RankingIcon],
-          ].map(([D, Q, Icon]) => (
+          ].map(([id, label, Icon]) => (
             <button
-              key={D}
-              aria-pressed={view === D}
-              onClick={() => setView(D)}
+              key={id}
+              aria-pressed={view === id}
+              onClick={() => setView(id)}
             >
               <Icon />
-              {Q}
+              {label}
             </button>
           ))}
         </div>
@@ -239,109 +268,175 @@ export function MatchesPage({ openContact, openSponsors }) {
         </div>
         {view === "calendario" ? (
           <>
-            <div className="match-month-toolbar">
-              <div className="match-month-nav">
-                <button
-                  onClick={() => changeMonth(-1)}
-                  aria-label="Mese precedente"
-                >
-                  <CaretLeftIcon />
-                </button>
-                <h3>
-                  {MONTH_NAMES[visibleMonth.getMonth()]}{" "}
-                  <span>{visibleMonth.getFullYear()}</span>
-                </h3>
-                <button
-                  onClick={() => changeMonth(1)}
-                  aria-label="Mese successivo"
-                >
-                  <CaretRightIcon />
-                </button>
-              </div>
-              <div className="match-layout-control">
-                <button
-                  onClick={() => {
-                    setVisibleMonth(
-                      new Date(today.getFullYear(), today.getMonth(), 1),
-                    );
-                    setSelectedDay(null);
-                  }}
-                >
-                  Oggi
-                </button>
-                <button
-                  aria-pressed={layout === "mese"}
-                  aria-label="Vista mensile"
-                  onClick={() => setLayout("mese")}
-                >
-                  <CalendarBlankIcon />
-                </button>
-                <button
-                  aria-pressed={layout === "lista"}
-                  aria-label="Vista elenco"
-                  onClick={() => setLayout("lista")}
-                >
-                  <ListBulletsIcon />
-                </button>
+            <div className="match-center-split">
+              <aside className="match-focus-column">
+                <MatchDetail fixture={focusFixture} />
+                {selectedDay && monthFixtures.length > 1 && (
+                  <div className="match-focus-options">
+                    {monthFixtures.map((fixture) => (
+                      <button
+                        key={fixture.id}
+                        aria-pressed={focusFixture?.id === fixture.id}
+                        onClick={() => setSelectedId(fixture.id)}
+                      >
+                        {
+                          MATCH_TEAMS.find((team) => team.id === fixture.team)
+                            ?.short
+                        }
+                        {" · "}
+                        {fixture.time}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </aside>
+              <div className="match-calendar-column">
+                <div className="match-month-toolbar">
+                  <div className="match-month-nav">
+                    <button
+                      onClick={() => changeMonth(-1)}
+                      aria-label="Mese precedente"
+                    >
+                      <CaretLeftIcon />
+                    </button>
+                    <h3>
+                      {MONTH_NAMES[visibleMonth.getMonth()]}{" "}
+                      <span>{visibleMonth.getFullYear()}</span>
+                    </h3>
+                    <button
+                      onClick={() => changeMonth(1)}
+                      aria-label="Mese successivo"
+                    >
+                      <CaretRightIcon />
+                    </button>
+                  </div>
+                  <div className="match-layout-control">
+                    <button
+                      onClick={() => {
+                        setVisibleMonth(
+                          new Date(today.getFullYear(), today.getMonth(), 1),
+                        );
+                        setSelectedDay(null);
+                      }}
+                    >
+                      Oggi
+                    </button>
+                    <button
+                      aria-pressed={layout === "mese"}
+                      aria-label="Vista mensile"
+                      onClick={() => setLayout("mese")}
+                    >
+                      <CalendarBlankIcon />
+                    </button>
+                    <button
+                      aria-pressed={layout === "lista"}
+                      aria-label="Vista elenco"
+                      onClick={() => setLayout("lista")}
+                    >
+                      <ListBulletsIcon />
+                    </button>
+                  </div>
+                </div>
+                {layout === "mese" && (
+                  <div
+                    key={
+                      visibleMonth.getFullYear() + "-" + visibleMonth.getMonth()
+                    }
+                    className="match-month-grid"
+                    aria-label={
+                      "Calendario di " +
+                      MONTH_NAMES[visibleMonth.getMonth()] +
+                      " " +
+                      visibleMonth.getFullYear()
+                    }
+                  >
+                    {["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"].map(
+                      (day) => (
+                        <span key={day} className="match-weekday">
+                          {day}
+                        </span>
+                      ),
+                    )}
+                    {buildMonthGrid(
+                      visibleMonth.getFullYear(),
+                      visibleMonth.getMonth(),
+                    ).map((item, index) =>
+                      item ? (
+                        <button
+                          key={index}
+                          aria-pressed={selectedDay === item}
+                          aria-label={
+                            item +
+                            " " +
+                            MONTH_NAMES[visibleMonth.getMonth()] +
+                            " " +
+                            visibleMonth.getFullYear()
+                          }
+                          aria-current={
+                            today.getDate() === item &&
+                            today.getMonth() === visibleMonth.getMonth() &&
+                            today.getFullYear() === visibleMonth.getFullYear()
+                              ? "date"
+                              : undefined
+                          }
+                          onClick={() => {
+                            const first = teamFixtures.find(
+                              (fixture) => fixture.date === dateKey(item),
+                            );
+                            setSelectedDay(selectedDay === item ? null : item);
+                            setSelectedId(first?.id || null);
+                            if (
+                              first &&
+                              matchMedia("(max-width:850px)").matches
+                            )
+                              requestAnimationFrame(() =>
+                                document
+                                  .querySelector(".match-focus-column")
+                                  ?.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                  }),
+                              );
+                          }}
+                        >
+                          <span>{item}</span>
+                          {teamFixtures
+                            .filter((fixture) => fixture.date === dateKey(item))
+                            .map((fixture) => (
+                              <small
+                                key={fixture.id}
+                                className={
+                                  "calendar-team-label outcome-" +
+                                  outcome(fixture)
+                                }
+                              >
+                                <span>{GARA_LABEL(fixture.team)}</span>
+                                <span
+                                  className="calendar-opponent"
+                                  title={opponentName(fixture)}
+                                >
+                                  {opponentShortName(fixture)}
+                                </span>
+                                <span className="calendar-fixture-score">
+                                  {OUTCOME_LABELS[outcome(fixture)]}
+                                  {fixture.score ? " · " + fixture.score : ""}
+                                </span>
+                              </small>
+                            ))}
+                        </button>
+                      ) : (
+                        <div key={index} className="match-blank-day" />
+                      ),
+                    )}
+                  </div>
+                )}
+                <OutcomeLegend />
+                <p className="calendar-order-note">
+                  Risultati nell’ordine casa–trasferta. Colori riferiti a
+                  Foiano.
+                </p>
               </div>
             </div>
-            {layout === "mese" && (
-              <div
-                key={visibleMonth.getFullYear() + "-" + visibleMonth.getMonth()}
-                className="match-month-grid"
-                aria-label={
-                  "Calendario di " +
-                  MONTH_NAMES[visibleMonth.getMonth()] +
-                  " " +
-                  visibleMonth.getFullYear()
-                }
-              >
-                {["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"].map(
-                  (item) => (
-                    <span key={item} className="match-weekday">
-                      {item}
-                    </span>
-                  ),
-                )}
-                {buildMonthGrid(
-                  visibleMonth.getFullYear(),
-                  visibleMonth.getMonth(),
-                ).map((item, index) =>
-                  item ? (
-                    <button
-                      key={index}
-                      aria-pressed={selectedDay === item}
-                      aria-label={
-                        item +
-                        " " +
-                        MONTH_NAMES[visibleMonth.getMonth()] +
-                        " " +
-                        visibleMonth.getFullYear()
-                      }
-                      aria-current={
-                        today.getDate() === item &&
-                        today.getMonth() === visibleMonth.getMonth() &&
-                        today.getFullYear() === visibleMonth.getFullYear()
-                          ? "date"
-                          : undefined
-                      }
-                      onClick={() =>
-                        setSelectedDay(selectedDay === item ? null : item)
-                      }
-                    >
-                      <span>{item}</span>
-                      {garaBadge(
-                        teamFixtures.filter(
-                          (teamFixture) => teamFixture.date === dateKey(item),
-                        ),
-                      )}
-                    </button>
-                  ) : (
-                    <div key={index} className="match-blank-day" />
-                  ),
-                )}
-              </div>
-            )}
             <div className="match-selection" aria-live="polite">
               <strong>
                 {selectedDay
@@ -356,6 +451,13 @@ export function MatchesPage({ openContact, openSponsors }) {
             </div>
             <FixtureList
               fixtures={listFixtures}
+              onSelect={(fixture) => {
+                setSelectedId(fixture.id);
+                setSelectedDay(Number(fixture.date.slice(8)));
+                document
+                  .querySelector("#calendario")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
               emptyTitle={
                 selectedDay
                   ? "Nessuna gara pubblicata per questo giorno."
@@ -372,31 +474,13 @@ export function MatchesPage({ openContact, openSponsors }) {
           />
         ) : (
           <div className="match-standings">
-            {selectedTeam &&
-            (We = TEAM_ROSTERS[teamFilter]) != null &&
-            We.length ? (
-              <div className="standings-scroll">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Pos.</th>
-                      <th>Squadra</th>
-                      <th>Punti</th>
-                      <th>Gare</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {TEAM_ROSTERS[teamFilter].map((item, index) => (
-                      <tr key={item.name}>
-                        <td>{index + 1}</td>
-                        <th scope="row">{item.name}</th>
-                        <td>{item.points}</td>
-                        <td>{item.played}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            {(teamFilter === "c" || teamFilter === "tutte") &&
+            standings.c?.length ? (
+              <StandingsTable
+                rows={standings.c}
+                updatedAt={updatedAt}
+                live={live}
+              />
             ) : (
               <EmptyState
                 icon={RankingIcon}
@@ -412,11 +496,22 @@ export function MatchesPage({ openContact, openSponsors }) {
             )}
           </div>
         )}
+        <p className="fipav-links">
+          <a href={FIPAV_GIRONE_URL} target="_blank" rel="noreferrer">
+            Calendario FIPAV ↗
+          </a>
+          {" · "}
+          <a href={FIPAV_CLASSIFICA_URL} target="_blank" rel="noreferrer">
+            Classifica FIPAV ↗
+          </a>
+        </p>
         <div className="match-data-note">
           <ShieldCheckIcon />
           <p>
-            Dati ufficiali, appena confermati. Un campo vuoto indica un dato non
-            ancora pubblicato.
+            Serie C · Fonte FIPAV Toscana.{" "}
+            {live ? "Collegamento aggiornato" : "Copia disponibile"}:{" "}
+            {new Date(updatedAt).toLocaleString("it-IT")}. Le altre squadre
+            attendono i calendari ufficiali.
           </p>
           <button
             onClick={() => openContact("Informazioni partite e calendari")}

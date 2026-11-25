@@ -227,6 +227,7 @@ export function App() {
             heroPaused={heroPaused}
             motionOff={motionOff}
             openContact={openContact}
+            openStandings={() => setDialog({ type: "standings" })}
             openTeam={openTeam}
             setHeroPaused={setHeroPaused}
             setLightbox={setLightbox}

@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react";
 import { NewsSection } from "../components/NewsSection";
 import { ClubSection } from "./home/ClubSection";
 import { Hero } from "./home/Hero";
+import { GalleryPreview } from "./home/GalleryPreview";
 import { HistorySection } from "./home/HistorySection";
 import { LegacySection } from "./home/LegacySection";
 import { MatchCenter } from "./home/MatchCenter";
@@ -18,6 +19,7 @@ export function HomePage({
   heroPaused,
   motionOff,
   openContact,
+  openStandings,
   openTeam,
   setHeroPaused,
   setLightbox,
@@ -35,16 +37,17 @@ export function HomePage({
       />
       <NextMatches gotoCalendar={gotoCalendar} />
       <PartnerRibbon />
-      <TeamsSection openTeam={openTeam} />
-      <NewsSection />
-      <NumbersSection />
-      <ClubSection openContact={openContact} openTeam={openTeam} />
-      <MatchCenter openContact={openContact} />
+      <MatchCenter openContact={openContact} openStandings={openStandings} />
       <div className="home-match-center-link section-wrap">
         <a className="text-link" href="/partite-risultati.html">
           Apri Partite e risultati <ArrowRightIcon />
         </a>
       </div>
+      <TeamsSection openTeam={openTeam} />
+      <GalleryPreview />
+      <NewsSection />
+      <NumbersSection />
+      <ClubSection openContact={openContact} openTeam={openTeam} />
       <HistorySection />
       <LegacySection openContact={openContact} />
       <YouthSection openContact={openContact} setLightbox={setLightbox} />

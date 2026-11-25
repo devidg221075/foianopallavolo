@@ -10,8 +10,10 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { Eyebrow } from "./Eyebrow";
+import { StandingsTable } from "./StandingsTable";
 import { ASSET_BASE } from "../config";
 import { TEAMS } from "../data/teams";
+import { useFipav } from "../hooks/useFipav";
 
 export function Modal({
   closeDialog,
@@ -26,6 +28,7 @@ export function Modal({
   setContactInterest,
   setEmailPrepared,
 }) {
+  const { standings, updatedAt, live } = useFipav();
   const [contactName, setContactName] = useState("");
   const [contactMessage, setContactMessage] = useState("");
   function prepareEmail() {
@@ -41,10 +44,22 @@ Interesse: ${contactInterest}`;
   return (
     <div className="modal-backdrop" onClick={closeDialog}>
       <section
-        className={"dialog " + (lightbox ? "lightbox" : "")}
+        className={
+          "dialog " +
+          (lightbox
+            ? "lightbox"
+            : dialog?.type === "standings"
+              ? "standings-dialog"
+              : "")
+        }
         role="dialog"
         aria-modal="true"
-        aria-label={lightbox?.title || "Foiano Pallavolo"}
+        aria-label={
+          lightbox?.title ||
+          (dialog?.type === "standings"
+            ? "Classifica Serie C maschile"
+            : "Foiano Pallavolo")
+        }
         ref={dialogRef}
         onClick={(event) => event.stopPropagation()}
       >
@@ -66,6 +81,14 @@ Interesse: ${contactInterest}`;
               <span>Foto dimostrativa</span>
             </div>
           </>
+        ) : dialog.type === "standings" ? (
+          <div className="dialog-body">
+            <StandingsTable
+              rows={standings.c}
+              updatedAt={updatedAt}
+              live={live}
+            />
+          </div>
         ) : dialog.type === "team" ? (
           <>
             <img
