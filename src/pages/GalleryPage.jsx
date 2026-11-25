@@ -13,6 +13,7 @@ import {
   GALLERY_CATEGORIES,
   albumPhotoSrc,
   albumThumbSrc,
+  photoAlt,
 } from "../data/gallery";
 
 const photoCount = (n) => n + (n === 1 ? " foto" : " foto");
@@ -72,7 +73,9 @@ function AlbumIndex() {
                   <span className="gallery-album-body">
                     <strong>{album.title}</strong>
                     <small>
-                      <ImagesIcon /> {photoCount(album.photos.length)}
+                      <ImagesIcon />
+                      {album.date ? album.date + " · " : ""}
+                      {photoCount(album.photos.length)}
                     </small>
                     <span className="gallery-album-go">
                       Apri l’album <ArrowRightIcon />
@@ -100,20 +103,22 @@ function AlbumView({ album }) {
       <div className="teams-kicker">{category?.label.toUpperCase()}</div>
       <h2 className="gallery-album-title">{album.title}</h2>
       <p className="gallery-album-desc">{album.description}</p>
-      <div className="gallery-grid">
+      <div
+        className="gallery-grid"
+        style={album.rowHeight ? { "--row-d": album.rowHeight + "px" } : undefined}
+      >
         {album.photos.map((photo, index) => (
           <button
             key={photo.file}
-            className={
-              "gallery-thumb" + (photo.width / photo.height > 2 ? " wide" : "")
-            }
+            className="gallery-thumb"
+            style={{ "--r": photo.width / photo.height }}
             aria-label={
               "Ingrandisci la foto " +
               (index + 1) +
               " di " +
               album.photos.length +
               ": " +
-              photo.alt
+              photoAlt(album, photo, index)
             }
             onClick={(event) => {
               triggerRef.current = event.currentTarget;
@@ -126,6 +131,7 @@ function AlbumView({ album }) {
               width={photo.width}
               height={photo.height}
               loading="lazy"
+              decoding="async"
             />
           </button>
         ))}
@@ -210,7 +216,7 @@ function Lightbox({ album, index, setIndex, returnFocus }) {
         </button>
       )}
       <figure>
-        <img src={albumPhotoSrc(album, photo)} alt={photo.alt} />
+        <img src={albumPhotoSrc(album, photo)} alt={photoAlt(album, photo, index)} />
         <figcaption>
           <span>{album.title}</span>
           <span>

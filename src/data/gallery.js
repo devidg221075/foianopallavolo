@@ -6,6 +6,11 @@
 //      e "01-t.webp" (miniatura, ~800 px)
 //   3. aggiungi l'album qui sotto, con una riga per foto.
 //
+// Campi di un album: id, title, category, description, cover (file della foto di copertina),
+// date (testo libero, facoltativo, es. "2025"), rowHeight (altezza delle righe di foto in px,
+// facoltativo, 220 se manca), photos.
+// Campi di una foto: file, width, height, alt (facoltativo: se manca si usa "<album>, foto N").
+//
 // Una categoria compare nella pagina solo se ha almeno un album.
 
 export const GALLERY_CATEGORIES = [
@@ -15,6 +20,13 @@ export const GALLERY_CATEGORIES = [
   { id: "eventi", label: "Eventi e feste" },
   { id: "storia", label: "Dal 1976" },
 ];
+
+// Costruisce l'elenco foto di un album numerato 01, 02, 03…  a partire dalle misure [larghezza, altezza].
+const photosFromSizes = (sizes, altOverrides = {}) =>
+  sizes.map(([width, height], index) => {
+    const file = String(index + 1).padStart(2, "0");
+    return { file, width, height, alt: altOverrides[file] };
+  });
 
 export const ALBUMS = [
   {
@@ -51,7 +63,73 @@ export const ALBUMS = [
       },
     ],
   },
+  {
+    id: "foiano-savinese-2025",
+    title: "Foiano Pallavolo – Polisportiva Savinese",
+    category: "partite",
+    date: "2025",
+    description:
+      "Le foto della partita tra Foiano Pallavolo e Polisportiva Savinese, giocata nel 2025.",
+    cover: "02",
+    rowHeight: 230,
+    photos: photosFromSizes(
+      [
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1201],
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1201],
+        [1200, 1800],
+        [1200, 1800],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1200, 1800],
+        [1200, 1800],
+        [1800, 1200],
+        [1800, 1200],
+        [1800, 1200],
+      ],
+      { "02": "Foto di squadra di Foiano Pallavolo davanti al fondale con il nome della società" },
+    ),
+  },
 ];
+
+export const photoAlt = (album, photo, index) =>
+  photo.alt || album.title + ", foto " + (index + 1);
 
 export const albumPhotoSrc = (album, photo) =>
   "/assets/galleria/" + album.id + "/" + photo.file + ".webp";
