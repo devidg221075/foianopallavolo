@@ -785,26 +785,65 @@
   }
 }
 
-/* Hero della home, prima slide: il giocatore in ritaglio sta tra il titolo e la foto di squadra,
-   sopra la scritta FOIANO, senza coprire nessuno dei due. */
-.slide-man .athlete-layer {
-  right: 17%;
+/* Hero della home, prima slide (variante C1): foto di squadra a tutta altezza a destra,
+   giocatore in ritaglio a sinistra della foto, sopra la scritta FOIANO e senza coprire il titolo. */
+.slide-man .hero-inset span,
+.slide-man .hero-news-shortcut {
+  display: none;
 }
 
-.slide-man .hero-athlete {
-  height: 73%;
-  object-position: center top;
+.slide-man .hero-inset img {
+  transform: none;
 }
 
-@media (max-width: 700px) {
-  /* Su telefono lo spazio tra il titolo e la foto di squadra è poco: il giocatore sta lì in mezzo. */
-  .slide-man .athlete-layer {
+@media (min-width: 701px) {
+  .slide-man .hero-inset {
+    left: auto;
     right: 0;
-    width: 52%;
-    height: 27%;
-    bottom: 30%;
+    top: 0;
+    bottom: 0;
+    width: 46%;
+    height: 100%;
+    clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .slide-man .hero-inset img {
+    object-position: 46% 50%;
+  }
+  .slide-man .athlete-layer {
+    left: 35%;
+    right: auto;
+    width: 27%;
+    height: 68%;
+    bottom: 26%;
   }
   .slide-man .hero-athlete {
     height: 100%;
+    object-position: center bottom;
+  }
+}
+
+@media (max-width: 700px) {
+  .slide-man .hero-inset {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 27.5%;
+    width: 62%;
+    height: 36%;
+    clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .slide-man .hero-inset img {
+    object-position: 46% 40%;
+  }
+  .slide-man .athlete-layer {
+    left: 0;
+    right: auto;
+    width: 46%;
+    height: 29%;
+    bottom: 27.5%;
+  }
+  .slide-man .hero-athlete {
+    height: 100%;
+    object-position: center bottom;
   }
 }
