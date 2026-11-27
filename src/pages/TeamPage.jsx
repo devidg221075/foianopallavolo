@@ -26,25 +26,22 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
   return (
     <div className={"teams-page team-detail detail-" + team.id}>
       <section className="teams-hero on-red" aria-labelledby="team-title">
-        {team.id === "c" ? (
-          <img
-            className="hero-cutout"
-            src={ASSET_BASE + "immagini/giocatore-17.webp"}
-            alt="Giocatore della Serie C maschile in salto, di spalle, con il numero 17"
-            fetchPriority="high"
-          />
-        ) : (
-          <img
-            className="teams-hero-photo"
-            src={ASSET_BASE + (isMini ? "youth" : team.image) + ".webp"}
-            alt={
-              isMini
+        <img
+          className="teams-hero-photo"
+          src={
+            team.id === "c"
+              ? ASSET_BASE + "serie-c/hero-squadra.webp"
+              : ASSET_BASE + (isMini ? "youth" : team.image) + ".webp"
+          }
+          alt={
+            team.id === "c"
+              ? "La squadra di Serie C maschile in campo, con la maglia Norcineria Toscana"
+              : isMini
                 ? "Bambini e bambine durante un allenamento"
                 : team.name + " in palestra"
-            }
-            fetchPriority="high"
-          />
-        )}
+          }
+          fetchPriority="high"
+        />
         <div className="teams-hero-red" />
         <div className="teams-hero-copy">
           <div className="teams-breadcrumb">
@@ -148,7 +145,9 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
                 </div>
                 <p>
                   {next
-                    ? next.round + " · Fonte " + (team.id === "c" ? "FIPAV" : "Comitato Etruria")
+                    ? next.round +
+                      " · Fonte " +
+                      (team.id === "c" ? "FIPAV" : "Comitato Etruria")
                     : "Il calendario ufficiale è in aggiornamento."}
                 </p>
                 <div className="detail-match-meta">
@@ -236,10 +235,18 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
       )}
       <section className="detail-editorial teams-wrap">
         {team.id === "c" ? (
-          <div className="detail-editorial-photo cutout" data-reveal>
+          <div className="detail-editorial-photo overlap" data-reveal>
+            <div className="overlap-photo">
+              <img
+                src={ASSET_BASE + "serie-c/identita-squadra.webp"}
+                alt="La squadra di Serie C maschile riunita a centro campo prima della partita"
+                loading="lazy"
+              />
+            </div>
             <img
-              src={ASSET_BASE + "immagini/giocatore-palleggio.webp"}
-              alt="Giocatore della Serie C maschile in palleggio, con la maglia Norcineria Toscana"
+              className="overlap-player"
+              src={ASSET_BASE + "immagini/giocatore-17.webp"}
+              alt="Giocatore della Serie C maschile in salto, di spalle, con il numero 17"
               loading="lazy"
             />
           </div>

@@ -44,6 +44,9 @@ def main():
         sys.exit(__doc__)
     album_id, cartella = sys.argv[1], sys.argv[2]
     dest = os.path.join(RADICE, "public", "assets", "galleria", album_id)
+    bozza = os.path.join(RADICE, "bozze", "galleria", album_id)
+    if os.path.isdir(bozza) and not os.path.isdir(dest):
+        dest = bozza  # album non ancora pubblicato: le foto restano fuori da public/
     os.makedirs(dest, exist_ok=True)
 
     # ordine numerico (non alfabetico: "100" viene dopo "99")

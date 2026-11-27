@@ -6,7 +6,7 @@
 //      e "01-t.webp" (miniatura, ~800 px)
 //   3. aggiungi l'album qui sotto, con una riga per foto.
 //
-// Campi di un album: id, title, category, description, cover (file della foto di copertina),
+// Campi di un album: id, title, category, description, published (false = nascosto), cover (file della foto di copertina),
 // date (testo libero, facoltativo, es. "2025"), rowHeight (altezza delle righe di foto in px,
 // facoltativo, 220 se manca), photos.
 // Campi di una foto: file, width, height, alt (facoltativo: se manca si usa "<album>, foto N").
@@ -28,7 +28,7 @@ const photosFromSizes = (sizes, altOverrides = {}) =>
     return { file, width, height, alt: altOverrides[file] };
   });
 
-export const ALBUMS = [
+const ALL_ALBUMS = [
   {
     id: "fipav-3g",
     title: "FIPAV 3G",
@@ -576,6 +576,7 @@ export const ALBUMS = [
   {
     id: "torneo-colle-valdezza-u12f",
     title: "Torneo Colle Valdezza Under 12 femminile",
+    published: false, // NON ancora pubblicato: le foto sono in bozze/galleria/. Per pubblicare: sposta la cartella in public/assets/galleria/ e metti true.
     category: "eventi",
     date: "6 aprile 2026",
     description: "Le foto del torneo di Colle Valdezza della squadra Under 12 femminile.",
@@ -597,6 +598,9 @@ export const ALBUMS = [
 
 export const photoAlt = (album, photo, index) =>
   photo.alt || album.title + ", foto " + (index + 1);
+
+// Gli album con published: false restano nel codice ma non compaiono nel sito.
+export const ALBUMS = ALL_ALBUMS.filter((album) => album.published !== false);
 
 export const albumPhotoSrc = (album, photo) =>
   "/assets/galleria/" + album.id + "/" + photo.file + ".webp";
