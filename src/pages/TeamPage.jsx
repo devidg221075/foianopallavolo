@@ -29,7 +29,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
         {team.id === "c" ? (
           <img
             className="hero-cutout"
-            src={ASSET_BASE + "giocatore-17.webp"}
+            src={ASSET_BASE + "immagini/giocatore-17.webp"}
             alt="Giocatore della Serie C maschile in salto, di spalle, con il numero 17"
             fetchPriority="high"
           />
@@ -238,7 +238,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
         {team.id === "c" ? (
           <div className="detail-editorial-photo cutout" data-reveal>
             <img
-              src={ASSET_BASE + "giocatore-palleggio.webp"}
+              src={ASSET_BASE + "immagini/giocatore-palleggio.webp"}
               alt="Giocatore della Serie C maschile in palleggio, con la maglia Norcineria Toscana"
               loading="lazy"
             />

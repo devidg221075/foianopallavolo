@@ -5,7 +5,7 @@ const ALL_HERO_SLIDES = [
     k: "man",
     eyebrow: "Foiano Pallavolo · Dal 1976",
     lines: ["IL NOSTRO", "GIOCO.", "LA NOSTRA", "PASSIONE."],
-    image: "giocatore-schiacciata",
+    image: "immagini/giocatore-schiacciata",
     small: "squadra-serie-c",
     label: "Serie C maschile",
     cta: "Le nostre squadre",

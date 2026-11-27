@@ -45,7 +45,7 @@ export function HistoryPage({ openContact }) {
         </div>
         <div className="history-hero-50">
           <img
-            src="/assets/logo-50-colori.webp"
+            src="/assets/immagini/logo-50-colori.webp"
             alt="50 anni di Foiano Pallavolo, 1976–2026"
             width="2000"
             height="931"

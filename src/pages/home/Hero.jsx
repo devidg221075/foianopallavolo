@@ -80,7 +80,7 @@ export function Hero({
       </div>
       <img
         className="hero-50"
-        src="/assets/logo-50-su-scuro.webp"
+        src="/assets/immagini/logo-50-su-scuro.webp"
         alt="50 anni di Foiano Pallavolo, 1976–2026"
         width="2000"
         height="919"

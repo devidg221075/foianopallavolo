@@ -15,7 +15,7 @@ export function Mascots({ teamId, className = "" }) {
       {list.map((kind) => (
         <img
           key={kind}
-          src={"/assets/mascotte-" + kind + ".webp"}
+          src={"/assets/immagini/mascotte-" + kind + ".webp"}
           alt=""
           width="945"
           height="1430"
