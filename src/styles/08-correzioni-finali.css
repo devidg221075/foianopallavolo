@@ -779,10 +779,10 @@
 .detail-editorial-photo.overlap .overlap-player {
   position: absolute;
   z-index: 2;
-  right: 4%;
+  right: -9.5%;
   bottom: -22px;
   width: auto;
-  height: 106%;
+  height: 100%;
   pointer-events: none;
 }
 
@@ -791,9 +791,9 @@
     height: 300px;
   }
   .detail-editorial-photo.overlap .overlap-player {
-    right: 2%;
+    right: 1%;
     bottom: -14px;
-    height: 104%;
+    height: 100%;
   }
 }
 
