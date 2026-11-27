@@ -1,0 +1,81 @@
+/* La rosa: figurine degli atleti nelle pagine Serie C maschile e Prima Divisione femminile */
+.roster {
+  padding-block: 70px 80px;
+}
+
+.roster-grid {
+  list-style: none;
+  margin: 38px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+
+.roster-card {
+  position: relative;
+  aspect-ratio: 1;
+  background: #111;
+  overflow: hidden;
+  border-bottom: 5px solid var(--red);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.roster-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roster-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 6px 18px 6px 10px;
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 9px) 100%, 0 100%);
+}
+
+@media (hover: hover) {
+  .roster-card:hover {
+    transform: translate(-3px, -5px) rotate(-1deg);
+    box-shadow: 7px 7px 0 var(--red);
+  }
+}
+
+@media (max-width: 1100px) {
+  .roster-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .roster {
+    padding-block: 46px 56px;
+  }
+  .roster-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .roster-tag {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roster-card {
+    transition: none;
+  }
+  .roster-card:hover {
+    transform: none;
+  }
+}

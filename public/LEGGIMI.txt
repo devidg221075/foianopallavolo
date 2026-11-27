@@ -1,0 +1,33 @@
+FOIANO PALLAVOLO — SITO COMPLETO — 14 PAGINE (versione 1.12)
+Destinazione: https://www.foianopallavolo.it/ (radice del dominio, non una sottocartella)
+
+CARICAMENTO
+Prima di sovrascrivere, conserva una copia dei file attuali sul server.
+Estrai il contenuto dello ZIP nella document root del sottodominio.
+Le pagine .html, la cartella assets e la cartella api devono stare allo stesso livello.
+Il sito funziona anche staticamente, ma per calendario, risultati e classifica della Serie C
+servono PHP e cURL attivi (api/fipav.php). Per controllare: apri
+https://www.foianopallavolo.it/api/fipav.php, deve rispondere con dati (JSON).
+Senza PHP il sito mostra la copia dei dati salvata nel sito (aggiornata al 17/11/2026).
+Nessun database o Node.js necessario. Attiva HTTPS.
+
+PAGINE
+/ = Home con prossime partite, calendario, classifica, galleria e news
+/galleria.html = Galleria fotografica divisa in categorie e album (?album=<id>)
+/partite-risultati.html = Calendari, risultati e classifiche
+/squadre.html, /serie-c-maschile.html, /prima-divisione-femminile.html,
+/giovanili-maschili.html, /giovanili-femminili.html, /minivolley.html = Squadre
+/dal-1976.html, /il-club.html, /sponsor.html, /contatti.html
+
+CONTENUTI
+Serie C maschile: calendario, risultati, classifica e loghi da FIPAV.
+Prima Divisione femminile e altre squadre: calendari in attesa dei dati ufficiali.
+Foto della galleria: album FIPAV 3G e Foiano Pallavolo – Polisportiva Savinese (2025).
+
+PUBBLICAZIONE
+Il sito è pronto per essere indicizzato: nessun noindex nelle pagine, robots.txt consente la
+scansione e sitemap.xml elenca le pagine con l'indirizzo https://www.foianopallavolo.it/.
+
+PERMESSI DEI FILE
+Cartelle 755 e file 644. Se un'immagine non si vede e il browser riceve "403", controlla i permessi
+di quel file sul server (un file con permessi 600 non è leggibile dal sito).

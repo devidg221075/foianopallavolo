@@ -1,0 +1,27 @@
+FOIANO PALLAVOLO – MATERIALE ESTRATTO DALLA LINEA GRAFICA
+Copia di sicurezza del 16/11/2026
+
+01-estratto-linea-grafica
+  - Foiano-Pallavolo-estratto-linea-grafica.pdf: sintesi in 6 pagine A4 (colori, caratteri,
+    forme e componenti, misure, regole d'uso, contatti, elenco file)
+  - pagina-web/: la stessa sintesi come pagina HTML (aprire index.html), con i caratteri inclusi
+
+02-logo  (file originali scaricati dalla linea grafica, PNG)
+  - logo-rosso.png ................ 1304x1304, su bianco e superfici rosa
+  - logo-bianco.png ............... 1304x1304, su rosso e pannelli scuri
+  - logo-ufficiale-fondo-rosso.png  1304x1304, avatar e icone
+  - giglio-rosso.png / giglio-bianco.png .. 331x368, solo segno decorativo
+  - pallone-rosso.png ............. 224x224, solo segno decorativo
+  Il logo esiste solo in PNG: per stampe grandi serve il vettoriale, da chiedere alla società.
+
+03-colori
+  - colori.css: i 24 colori con nome (variabili CSS), pronti per il sito
+
+04-caratteri
+  - Poppins (500, 700, 700 corsivo) e Inter variabile (include lo stile Display tramite
+    l'asse "opsz"), formato WOFF2 per il web, con licenza SIL Open Font License 1.1.
+  - NB: questi file vengono dalla distribuzione open source (Fontsource), non dalla cartella
+    fonts/ della linea grafica, che contiene i TTF/OTF originali.
+
+Non inclusi (restano nella linea grafica online): icone SVG, pattern, divise, documenti PDF
+della società, tokens.json e components/bundle.css.

@@ -1,0 +1,1060 @@
+/* Calendario, risultati e classifica FIPAV (recuperato dalla v1.11) */
+.foiano-standing {
+  background: #fff0f0;
+  color: #951c22;
+  font-weight: 800;
+}
+.foiano-standing th,
+.foiano-standing td {
+  color: #951c22 !important;
+}
+.fipav-links a {
+  color: #981d24;
+  font-weight: 700;
+}
+.fixture-list h3 {
+  overflow-wrap: anywhere;
+}
+.headline-clubs > div {
+  overflow-wrap: anywhere;
+  font-size: clamp(14px, 2vw, 20px);
+}
+.match-month-grid button {
+  height: auto;
+  min-height: 100px;
+  min-width: 0;
+}
+.match-month-grid .calendar-team-label {
+  display: block;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  font-size: 11px;
+  font-weight: 800;
+  margin-top: 7px;
+  letter-spacing: 0;
+  text-align: left;
+}
+@media (max-width: 700px) {
+  .match-month-grid button {
+    min-height: 92px;
+    padding: 8px 4px;
+  }
+  .match-month-grid .calendar-team-label {
+    font-size: 8px;
+    line-height: 1.4;
+    margin-top: 5px;
+  }
+}
+.outcome-won {
+  --event-bg: #dcfce7;
+  --event-ink: #14532d;
+  --event-border: #15803d;
+}
+.outcome-lost {
+  --event-bg: #fee2e2;
+  --event-ink: #7f1d1d;
+  --event-border: #b91c1c;
+}
+.outcome-scheduled,
+.outcome-pending {
+  --event-bg: #dbeafe;
+  --event-ink: #1e3a8a;
+  --event-border: #2563eb;
+}
+.outcome-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+.outcome-legend > span,
+.fixture-status {
+  padding: 5px 9px;
+  border-left: 3px solid var(--event-border);
+  background: var(--event-bg);
+  color: var(--event-ink);
+  border-radius: 4px;
+}
+.match-month-grid .calendar-team-label {
+  padding: 6px 4px;
+  border-left: 3px solid var(--event-border);
+  background: var(--event-bg);
+  color: var(--event-ink);
+  border-radius: 4px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.calendar-team-label > span {
+  display: block;
+  color: inherit !important;
+}
+.calendar-team-label .calendar-fixture-score {
+  font-size: 12px;
+  font-weight: 650;
+  margin-top: 4px;
+}
+.calendar-grid button {
+  height: auto;
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 2px;
+}
+.calendar-grid button .home-calendar-result {
+  display: block;
+  position: static;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  padding: 4px 1px;
+  margin-top: 4px;
+  background: var(--event-bg);
+  color: var(--event-ink);
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.home-calendar-result b {
+  display: block;
+  font-size: 11px;
+  color: inherit;
+}
+.club-logo {
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.next-opponent > .club-logo,
+.opponent > .club-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  max-width: none;
+}
+.headline-opponent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.headline-opponent .club-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+.fixture-list .fixture-clubs {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-block: 12px;
+}
+.fixture-clubs > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 140px;
+  color: inherit;
+}
+.fixture-clubs .club-logo,
+.fixture-clubs .club-logo-fallback {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+.fixture-list .fixture-status {
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 0 8px;
+}
+@media (max-width: 700px) {
+  .match-month-grid {
+    gap: 2px;
+  }
+  .match-month-grid .calendar-team-label {
+    font-size: 9px;
+    padding: 5px 2px;
+    border-left-width: 2px;
+  }
+  .calendar-team-label .calendar-fixture-score {
+    font-size: 10px;
+  }
+  .match-month-grid button {
+    padding-inline: 2px;
+    min-height: 115px;
+  }
+  .headline-opponent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .next-opponent > .club-logo,
+  .opponent > .club-logo {
+    width: 48px;
+    height: 48px;
+  }
+  .fixture-list .fixture-clubs {
+    gap: 8px;
+  }
+  .fixture-clubs > span {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+  .fixture-clubs > b {
+    margin-left: 54px;
+  }
+  .calendar-grid button {
+    min-height: 70px;
+  }
+}
+.home-day-fixtures {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+}
+.home-day-fixtures > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.home-day-fixtures .club-logo,
+.home-day-fixtures .club-logo-fallback {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+.home-day-fixtures span {
+  font-size: 12px;
+  flex: 1;
+}
+.home-day-fixtures small {
+  display: block;
+  margin-top: 5px;
+}
+.detail-match-clubs .club-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+.match-center-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 26px;
+}
+.match-focus-column,
+.match-calendar-column {
+  min-width: 0;
+}
+.match-focus {
+  background: var(--red);
+  color: #fff;
+  padding: 25px 20px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.match-focus:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: url(/assets/court.webp) center/cover;
+  opacity: 0.12;
+}
+.match-focus .focus-kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  color: #fff;
+}
+.match-focus h3 {
+  font-size: 23px;
+  line-height: 1.15;
+  margin: 14px 0 8px;
+  color: #fff;
+}
+.match-focus .focus-round {
+  font-size: 13px;
+  color: #fff;
+}
+.focus-clubs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: 9px;
+  margin: 28px 0 20px;
+}
+.focus-clubs > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  min-width: 0;
+}
+.focus-clubs .club-logo,
+.focus-clubs .club-logo-fallback {
+  width: clamp(72px, 7.3vw, 105px);
+  height: clamp(72px, 7.3vw, 105px);
+  object-fit: contain;
+  background: #fff;
+  padding: 7px;
+  border-radius: 10px;
+  color: var(--red);
+}
+.focus-clubs strong {
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  color: #fff !important;
+}
+.focus-clubs small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #fff !important;
+}
+.focus-score {
+  font-size: clamp(24px, 2.8vw, 40px);
+  font-weight: 900;
+  line-height: 1;
+  padding-top: 32px;
+  white-space: nowrap;
+  color: #fff !important;
+}
+.focus-outcome {
+  border-top: 1px solid #ffffff60;
+  border-bottom: 1px solid #ffffff60;
+  padding: 12px 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+}
+.focus-sets {
+  padding-top: 18px;
+}
+.focus-sets > strong {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #fff !important;
+}
+.focus-sets p {
+  font-size: 17px;
+  line-height: 1.65;
+  margin: 7px 0;
+  color: #fff !important;
+}
+.focus-sets small {
+  font-size: 12px;
+  color: #fff !important;
+}
+.focus-meta {
+  display: grid;
+  gap: 13px;
+  padding-top: 23px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #fff;
+}
+.focus-meta span {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #fff !important;
+}
+.focus-meta svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+.match-focus > p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #fff;
+}
+.match-focus-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.match-focus-options button {
+  padding: 10px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+}
+.match-focus-options button[aria-pressed="true"] {
+  background: var(--red);
+  color: #fff;
+}
+.match-calendar-column .match-month-toolbar {
+  margin-top: 0;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.match-calendar-column .match-month-grid {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.match-calendar-column .match-month-grid button {
+  min-height: 132px;
+  padding: 9px 5px;
+}
+.match-calendar-column .calendar-team-label {
+  font-size: 10px;
+  padding: 5px 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.calendar-team-label .calendar-opponent {
+  font-size: 12px;
+  line-height: 1.35;
+  margin-top: 7px;
+  font-weight: 750;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.match-calendar-column .calendar-fixture-score {
+  font-size: 11px;
+  line-height: 1.4;
+}
+.calendar-order-note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4b4b52;
+  margin: 10px 0 0;
+}
+.fixture-detail-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--red);
+  font-weight: 750;
+  font-size: 13px;
+  margin-top: 15px;
+}
+.fixture-detail-button svg {
+  width: 18px;
+  height: 18px;
+}
+.match-section .match-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+.match-clubs {
+  gap: 14px;
+  padding-inline: 0;
+}
+.match-clubs > div:not(.score-digits) {
+  width: 130px;
+  min-width: 0;
+}
+.match-clubs img,
+.match-clubs .opponent > .club-logo {
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+}
+.match-clubs .score-digits span {
+  font-size: clamp(36px, 4.5vw, 66px);
+}
+.match-clubs strong,
+.match-clubs .opponent strong {
+  font-size: 13px !important;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  color: #fff !important;
+  overflow-wrap: anywhere;
+}
+.next-match-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  gap: 14px;
+}
+.next-club,
+.next-opponent {
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  min-width: 0;
+}
+.next-club img,
+.next-opponent > .club-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+.next-opponent > span {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #3d3d43;
+}
+.next-club strong {
+  font-size: 13px;
+}
+.headline-clubs > img,
+.headline-opponent .club-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+.headline-clubs {
+  flex-wrap: wrap;
+}
+.headline-opponent {
+  flex: 1;
+}
+.headline-opponent .club-logo {
+  flex-shrink: 0;
+}
+.calendar-grid {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: stretch;
+}
+.calendar-grid button {
+  min-width: 0;
+  min-height: 42px;
+  justify-content: flex-start;
+}
+.calendar-grid button .home-calendar-result {
+  padding: 6px 3px;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: normal;
+  overflow-wrap: normal;
+}
+.home-calendar-result .home-event-opponent {
+  display: block;
+  font-size: 11px;
+  line-height: 1.4;
+  color: inherit;
+  font-weight: 750;
+}
+.home-calendar-result b {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.home-calendar-result .home-event-status {
+  display: block;
+  color: inherit;
+  font-size: 10px;
+  margin-top: 4px;
+}
+.day-detail {
+  align-items: flex-start;
+  flex-direction: column;
+}
+.home-day-fixtures .club-logo,
+.home-day-fixtures .club-logo-fallback {
+  width: 64px;
+  height: 64px;
+}
+.home-day-fixtures span {
+  font-size: 13px;
+}
+@media (max-width: 1100px) {
+  .match-center-split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 16px;
+  }
+  .match-focus {
+    padding: 20px 14px;
+  }
+  .focus-clubs {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 15px;
+  }
+  .focus-score {
+    grid-column: 1/-1;
+    grid-row: 2;
+    padding-top: 0;
+    text-align: center;
+  }
+  .focus-clubs > div:last-child {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .focus-clubs .club-logo {
+    width: 82px;
+    height: 82px;
+  }
+  .match-calendar-column .calendar-opponent {
+    font-size: 11px;
+  }
+  .match-calendar-column .match-month-grid button {
+    padding-inline: 3px;
+  }
+  .match-section .match-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+  .match-clubs img,
+  .match-clubs .opponent > .club-logo {
+    width: 94px;
+    height: 94px;
+  }
+  .next-kickoff {
+    min-width: 80px;
+    padding-left: 10px;
+  }
+  .next-match-body {
+    gap: 9px;
+  }
+}
+@media (max-width: 850px) {
+  .match-center-split {
+    grid-template-columns: 1fr;
+  }
+  .match-focus {
+    padding: 24px;
+  }
+  .focus-clubs {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    max-width: 520px;
+    margin-inline: auto;
+    gap: 20px;
+  }
+  .focus-score {
+    grid-column: auto;
+    grid-row: auto;
+    padding-top: 32px;
+    font-size: 40px;
+  }
+  .focus-clubs > div:last-child {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .focus-clubs .club-logo {
+    width: 112px;
+    height: 112px;
+  }
+  .focus-clubs strong {
+    font-size: 14px;
+  }
+  .match-focus .focus-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+  .focus-meta span:last-child {
+    grid-column: 1/-1;
+  }
+  .match-section .match-layout {
+    grid-template-columns: 1fr;
+  }
+  .match-clubs {
+    max-width: 560px;
+    width: 100%;
+    margin: auto;
+    gap: 18px;
+  }
+  .match-clubs img,
+  .match-clubs .opponent > .club-logo {
+    width: 120px;
+    height: 120px;
+  }
+  .match-clubs .score-digits span {
+    font-size: 62px;
+  }
+  .calendar-panel {
+    padding: 22px 16px;
+  }
+  .calendar-grid button .home-calendar-result {
+    padding-inline: 3px;
+  }
+  .next-match-body {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  .next-kickoff {
+    grid-column: 1/-1;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 10px 0 0;
+    margin: 0;
+  }
+  .next-kickoff > strong {
+    font-size: 28px;
+  }
+}
+@media (max-width: 550px) {
+  .match-calendar-column .match-month-grid {
+    gap: 2px;
+  }
+  .match-calendar-column .match-month-grid button {
+    min-height: 145px;
+    padding: 7px 2px;
+  }
+  .match-calendar-column .calendar-team-label {
+    font-size: 8px;
+    padding: 5px 2px;
+    border-left-width: 2px;
+    line-height: 1.5;
+  }
+  .match-calendar-column .calendar-opponent {
+    font-size: 10px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .match-calendar-column .calendar-fixture-score {
+    font-size: 10px;
+  }
+  .match-month-nav h3 {
+    font-size: 22px;
+  }
+  .match-focus {
+    padding: 22px 16px;
+  }
+  .focus-clubs {
+    gap: 10px;
+  }
+  .focus-clubs .club-logo {
+    width: 96px;
+    height: 96px;
+  }
+  .focus-score {
+    font-size: 34px;
+  }
+  .focus-clubs strong {
+    font-size: 12px;
+  }
+  .match-clubs > div:not(.score-digits) {
+    width: 105px;
+  }
+  .match-clubs img,
+  .match-clubs .opponent > .club-logo {
+    width: 100px;
+    height: 100px;
+  }
+  .match-clubs .score-digits span {
+    font-size: 43px;
+  }
+  .match-clubs strong,
+  .match-clubs .opponent strong {
+    font-size: 12px !important;
+  }
+  .scoreboard {
+    padding: 22px 16px 0;
+  }
+  .calendar-grid button .home-calendar-result {
+    font-size: 10px;
+    padding: 5px 2px;
+  }
+  .home-calendar-result .home-event-opponent {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+  }
+  .home-calendar-result b {
+    font-size: 13px;
+  }
+  .home-calendar-result .home-event-status {
+    font-size: 9px;
+  }
+  .next-club img,
+  .next-opponent > .club-logo {
+    width: 90px;
+    height: 90px;
+  }
+  .home-day-fixtures .club-logo {
+    width: 58px;
+    height: 58px;
+  }
+}
+.match-section .match-layout {
+  align-items: start;
+}
+.match-section .scoreboard {
+  min-height: 420px;
+}
+.match-section .scoreboard .match-clubs {
+  padding-block: 35px 25px;
+  flex: 0;
+}
+.match-section .scoreboard .scoreboard-status {
+  margin-top: auto;
+}
+.match-focus-column {
+  scroll-margin-top: 105px;
+}
+.match-calendar-column .match-blank-day {
+  height: auto;
+  align-self: stretch;
+  background: #f4f3f0;
+}
+@media (max-width: 550px) {
+  .match-clubs {
+    gap: 8px;
+  }
+  .match-clubs > div:not(.score-digits) {
+    width: 100px;
+  }
+  .match-focus-column {
+    scroll-margin-top: 95px;
+  }
+}
+@media (max-width: 380px) {
+  .match-clubs img,
+  .match-clubs .opponent > .club-logo {
+    width: 88px;
+    height: 88px;
+  }
+  .focus-clubs .club-logo {
+    width: 86px;
+    height: 86px;
+  }
+  .focus-score {
+    font-size: 30px;
+  }
+}
+.home-standing-teaser {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px 22px;
+  margin: 0 0 24px;
+  background: #fff;
+  border: 1px solid #e3d9da;
+  border-left: 4px solid var(--red);
+  color: #262629;
+}
+.standing-teaser-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.standing-teaser-title > svg {
+  color: var(--red);
+  flex-shrink: 0;
+}
+.standing-teaser-title span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 750;
+  color: #8d1b23;
+  margin-bottom: 6px;
+}
+.standing-teaser-title strong {
+  font-size: 19px;
+}
+.standing-teaser-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  flex: 1;
+  font-size: 13px;
+  color: #45454b;
+}
+.standing-teaser-stats > span {
+  white-space: nowrap;
+}
+.standing-teaser-stats b {
+  font-size: 17px;
+  color: #242428;
+}
+.home-standing-teaser > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 750;
+}
+.home-standing-teaser > button svg {
+  width: 19px;
+  height: 19px;
+}
+.dialog.standings-dialog {
+  width: min(1240px, 96vw);
+  max-width: 1240px;
+  background: #fff;
+  color: #262629;
+}
+.standings-dialog .dialog-body {
+  padding: 38px 30px 28px;
+}
+.standings-dialog .dialog-close {
+  z-index: 2;
+}
+.standing-title h2 {
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin: 12px 0;
+}
+.standing-title p,
+.standing-legend,
+.standing-source p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #515158;
+}
+.standing-scroll-hint {
+  font-size: 12px;
+  margin: 18px 0 10px;
+  color: #515158;
+}
+.official-standing .standings-scroll {
+  overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
+  background: #fff;
+}
+.official-standing table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 1040px;
+  color: #262629;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.official-standing caption {
+  font-size: 12px;
+  text-align: left;
+  padding: 12px 10px;
+  color: #55555d;
+}
+.official-standing th,
+.official-standing td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #e4e4e7;
+  white-space: nowrap;
+}
+.official-standing thead th {
+  background: #f3f2ef;
+  color: #343439;
+  font-weight: 800;
+}
+.official-standing th:nth-child(2) {
+  text-align: left;
+  white-space: normal;
+  min-width: 200px;
+  max-width: 270px;
+}
+.official-standing tbody th {
+  font-weight: 650;
+}
+.official-standing .foiano-standing > * {
+  background: #fff0f0;
+  color: #8d1822 !important;
+  font-weight: 800;
+}
+.official-standing .foiano-standing th {
+  border-left: 3px solid var(--red);
+}
+.official-standing abbr {
+  text-decoration: none;
+}
+.standing-legend {
+  margin-top: 18px;
+}
+.standing-source {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.standing-source a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #941d26;
+  font-size: 13px;
+  font-weight: 750;
+}
+.standing-source svg {
+  width: 17px;
+  height: 17px;
+}
+@media (max-width: 700px) {
+  .home-standing-teaser {
+    padding: 18px;
+    gap: 17px;
+  }
+  .standing-teaser-stats {
+    flex-basis: 100%;
+    gap: 12px 18px;
+  }
+  .home-standing-teaser > button {
+    width: 100%;
+  }
+  .standings-dialog .dialog-body {
+    padding: 46px 16px 22px;
+  }
+  .standing-title h2 {
+    font-size: 25px;
+  }
+  .official-standing th,
+  .official-standing td {
+    padding: 11px 9px;
+  }
+  .standing-source {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+.match-referees {
+  border-top: 1px solid #ffffff60;
+  margin-top: 20px;
+  padding-top: 16px;
+  color: #fff;
+}
+.match-referees > strong {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #fff !important;
+}
+.match-referees dl {
+  display: grid;
+  gap: 12px;
+  margin: 14px 0 0;
+}
+.match-referees dl > div {
+  display: grid;
+  gap: 3px;
+}
+.match-referees dt {
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff !important;
+}
+.match-referees dd {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #fff !important;
+}
+.scoreboard .match-referees {
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+.scoreboard .match-referees dl {
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+@media (max-width: 550px) {
+  .scoreboard .match-referees dl {
+    grid-template-columns: 1fr;
+  }
+}
