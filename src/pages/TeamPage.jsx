@@ -9,6 +9,7 @@ import {
 } from "@phosphor-icons/react";
 import { ClubLogo } from "../components/ClubLogo";
 import { Mascots } from "../components/Mascots";
+import { RosterCards } from "../components/RosterCards";
 import { ASSET_BASE } from "../config";
 import { TEAM_PAGES } from "../data/teamPages";
 import { useFipav } from "../hooks/useFipav";
@@ -82,6 +83,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
               ? "Giocare e crescere"
               : "Il percorso"}
         </a>
+        {isFirstTeam && <a href="#rosa">La rosa</a>}
         <a href="/galleria.html">Galleria</a>
         <a href="#informazioni">
           {isMini ? "Per le famiglie" : "Informazioni"}
@@ -190,13 +192,13 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
                   <span className="teams-kicker">ROSA E STAFF</span>
                   <h3>Le persone, al centro.</h3>
                   <p>
-                    {team.id === "f" ? "Atlete" : "Atleti"}, allenatori e staff
-                    saranno presentati qui dopo la conferma dei nominativi
-                    ufficiali.
+                    {team.id === "f" ? "Le atlete" : "Gli atleti"} sono qui
+                    sotto. Allenatori e staff saranno presentati dopo la
+                    conferma dei nominativi ufficiali.
                   </p>
-                  <button className="text-link" onClick={askInfo}>
-                    Chiedi informazioni <ArrowUpRightIcon />
-                  </button>
+                  <a className="text-link" href="#rosa">
+                    Vai alla rosa <ArrowUpRightIcon />
+                  </a>
                 </div>
               </div>
             </div>
@@ -233,6 +235,7 @@ export function TeamPage({ team, teams, teamHref, openContact, openSponsors }) {
           </div>
         </section>
       )}
+      <RosterCards team={team} />
       <section className="detail-editorial teams-wrap">
         {team.id === "c" ? (
           <div className="detail-editorial-photo overlap" data-reveal>
