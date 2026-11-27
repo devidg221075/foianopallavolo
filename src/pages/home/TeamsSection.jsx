@@ -15,19 +15,19 @@ export function TeamsSection({ openTeam }) {
         {[
           {
             name: "Maschile",
-            image: "men",
+            image: "squadre-home/maschile",
             desc: "Serie C e settore giovanile",
             team: TEAMS[0],
           },
           {
             name: "Femminile",
-            image: "women",
+            image: "squadre-home/femminile",
             desc: "Prima Divisione e settore giovanile",
             team: TEAMS[1],
           },
           {
             name: "Minivolley",
-            image: "mini",
+            image: "squadre-home/minivolley",
             desc: "Il primo passo, per bambini e bambine",
             team: TEAMS[4],
           },

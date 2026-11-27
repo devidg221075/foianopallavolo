@@ -573,6 +573,26 @@ export const ALBUMS = [
       [871, 1120],
     ]),
   },
+  {
+    id: "torneo-colle-valdezza-u12f",
+    title: "Torneo Colle Valdezza Under 12 femminile",
+    category: "eventi",
+    date: "6 aprile 2026",
+    description: "Le foto del torneo di Colle Valdezza della squadra Under 12 femminile.",
+    cover: "02",
+    rowHeight: 260,
+    photos: photosFromSizes(
+      [
+        [1392, 1043],
+        [1755, 1559],
+        [1800, 1350],
+        [1800, 1355],
+        [1700, 1280],
+        [1081, 811],
+        [1185, 1523],
+      ],
+    ),
+  },
 ];
 
 export const photoAlt = (album, photo, index) =>

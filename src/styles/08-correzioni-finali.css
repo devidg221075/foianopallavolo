@@ -810,11 +810,11 @@
     object-position: 46% 50%;
   }
   .slide-man .athlete-layer {
-    left: 35%;
+    left: 34%;
     right: auto;
-    width: 27%;
-    height: 68%;
-    bottom: 26%;
+    width: 31%;
+    height: 78%;
+    bottom: 22%;
   }
   .slide-man .hero-athlete {
     height: 100%;
@@ -838,9 +838,9 @@
   .slide-man .athlete-layer {
     left: 0;
     right: auto;
-    width: 46%;
-    height: 29%;
-    bottom: 27.5%;
+    width: 52%;
+    height: 36%;
+    bottom: 22%;
   }
   .slide-man .hero-athlete {
     height: 100%;
