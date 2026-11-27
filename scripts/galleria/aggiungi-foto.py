@@ -5,7 +5,7 @@ Uso:
     python3 scripts/galleria/aggiungi-foto.py <id-album> <cartella-con-le-foto>
 
 Cosa fa:
-  - legge le foto (jpg, jpeg, png, webp) in ordine "naturale" (1, 2, 10, non 1, 10, 2);
+  - legge le foto (jpg, jpeg, png, webp, tif) in ordine "naturale" (1, 2, 10, non 1, 10, 2);
   - salta le copie identiche (tra loro e rispetto a quelle già nell'album);
   - le converte in public/assets/galleria/<id-album>/NN.webp (max 1800 px) e NN-t.webp (miniatura 700 px),
     continuando la numerazione dopo l'ultima foto già presente;
@@ -21,7 +21,7 @@ import sys
 from PIL import Image, ImageOps
 
 RADICE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-ESTENSIONI = (".jpg", ".jpeg", ".png", ".webp")
+ESTENSIONI = (".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff")
 
 
 def ordine_naturale(nome):
